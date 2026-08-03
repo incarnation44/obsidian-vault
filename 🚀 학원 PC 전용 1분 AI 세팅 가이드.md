@@ -21,7 +21,7 @@ date: 2026-08-03
 학원 PC의 **PowerShell(파워셸)**을 열고 아래 1줄 명령어를 복사해서 실행하면 설치부터 AI 모델 다운로드, 가속 세팅까지 1분 만에 자동으로 끝납니다:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "C:\전일도\setup_academy_pc.ps1"
+git clone https://github.com/incarnation44/obsidian-vault.git C:\전일도; powershell -ExecutionPolicy Bypass -File "C:\전일도\setup_academy_pc.ps1"
 ```
 *(또는 옵시디언 볼트 폴더 `C:\전일도\setup_academy_pc.ps1` 파일을 오른쪽 클릭 ➔ [PowerShell로 실행] 클릭)*
 
