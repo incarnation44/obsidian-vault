@@ -46,16 +46,6 @@ date: 2026-08-03
 
 ---
 
-## 3. 🖥️ 하드웨어 사양 정보
-
-- **CPU**: AMD Ryzen 5 5600XT (6 Cores / 12 Threads)
-- **GPU**: AMD Radeon RX 6600 (8GB VRAM)
-- **RAM**: 32 GB (DDR4 3200 MHz)
-- **PSU (파워)**: AONE 시그니처 750W 80PLUS BRONZE 풀모듈러 (ATX 3.1)
-- **OS**: Windows 11 Pro (64-bit)
-
----
-
 ## 🔗 관련 문서
 - [[🛠️ 설치된 도구 목록]]
 - [[📋 터미널 작업 히스토리]]
