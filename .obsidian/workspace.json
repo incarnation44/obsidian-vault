@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "📋 터미널 작업 히스토리.md",
+                "file": "💻 PC 상세 하드웨어 사양 및 가속 환경.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "📋 터미널 작업 히스토리"
+              "title": "💻 PC 상세 하드웨어 사양 및 가속 환경"
             }
           }
         ]
@@ -187,6 +187,8 @@
   },
   "active": "a66a74b6e2462825",
   "lastOpenFiles": [
+    "📋 터미널 작업 히스토리.md",
+    "🤖 AI 모델 상세 명세 및 벤치마크.md",
     "💻 PC 상세 하드웨어 사양 및 가속 환경.md",
     "🔑 다음 세션 시작 체크리스트.md",
     "🤖 Claude Code 활용법.md",
@@ -198,7 +200,6 @@
     "🌌 Antigravity (Google AI IDE) 활용법.md",
     "💻 코딩 및 개발 지식 정리.md",
     "💻 PC 시스템 세팅 및 오류 해결 노하우.md",
-    "📋 터미널 작업 히스토리.md",
     "📚 인덱스.md",
     "🔌 MCP 서버 목록 및 활용법.md",
     "🤖 AI 세팅 및 모델 활용 노하우.md",
