@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자기소개서 - 전일도 (실무형)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+      background: #eef0f3;
+      color: #222;
+      line-height: 1.9;
+      font-size: 15px;
+    }
+    .page {
+      max-width: 820px;
+      margin: 40px auto;
+      background: #fff;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .header {
+      padding: 48px 52px 32px;
+      border-bottom: 2px solid #222;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: 10px;
+      color: #111;
+      margin-bottom: 6px;
+    }
+    .header .role {
+      font-size: 12.5px;
+      color: #555;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+    .header-info {
+      text-align: right;
+      font-size: 12.5px;
+      color: #555;
+      line-height: 2;
+    }
+    .header-info .row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+    .header-info .label {
+      color: #aaa;
+      font-size: 11px;
+    }
+    .tag-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+    }
+    .tag {
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      padding: 3px 12px;
+      font-size: 12px;
+      color: #444;
+    }
+    .tag.highlight {
+      border-color: #111;
+      background: #111;
+      color: #fff;
+    }
+    .body { padding: 0 52px 52px; }
+    .section {
+      padding: 32px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .section:last-child { border-bottom: none; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #999;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .section p {
+      color: #333;
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 12px;
+    }
+    .col-block .col-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #111;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #111;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+    .col-block p {
+      font-size: 13.5px;
+      color: #444;
+    }
+    .skill-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 13.5px;
+    }
+    .skill-table tr { border-bottom: 1px solid #f0f0f0; }
+    .skill-table tr:last-child { border-bottom: none; }
+    .skill-table td { padding: 9px 12px 9px 0; vertical-align: top; }
+    .skill-table .skill-cat {
+      width: 120px;
+      font-weight: 700;
+      color: #888;
+      font-size: 11.5px;
+      letter-spacing: 0.5px;
+    }
+    .skill-table .skill-val { color: #333; }
+    .highlight-line {
+      border-left: 3px solid #111;
+      padding: 10px 0 10px 16px;
+      margin: 14px 0;
+      font-size: 14px;
+      color: #222;
+      background: #fafafa;
+    }
+    .exp-item { margin-bottom: 16px; }
+    .exp-item .exp-title { font-weight: 700; color: #111; margin-bottom: 4px; }
+    .exp-item .exp-period { font-size: 12px; color: #999; margin-bottom: 6px; }
+    .exp-item .exp-desc { font-size: 14px; color: #444; }
+    .footer {
+      background: #f8f8f8;
+      border-top: 1px solid #eee;
+      padding: 14px 52px;
+      font-size: 11.5px;
+      color: #bbb;
+      text-align: right;
+      letter-spacing: 0.5px;
+    }
+    @media print {
+      body { background: white; }
+      .page { box-shadow: none; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="header-top">
+        <div>
+          <h1>전 일 도</h1>
+          <div class="role">Java Backend Developer (신입) · KH정보교육원 수료 2026.04</div>
+        </div>
+        <div class="header-info">
+          <div class="row"><span class="label">학교</span><span>건국대학교 경영학과</span></div>
+          <div class="row"><span class="label">어학</span><span>영어 원어민 수준 (국제학교 12년)</span></div>
+          <div class="row"><span class="label">해외</span><span>태국 16년 거주 · 해외근무 가능</span></div>
+        </div>
+      </div>
+      <div class="tag-line">
+        <span class="tag highlight">Java</span>
+        <span class="tag highlight">Spring Boot</span>
+        <span class="tag highlight">JPA</span>
+        <span class="tag highlight">MySQL</span>
+        <span class="tag">React</span>
+        <span class="tag">MyBatis</span>
+        <span class="tag">REST API</span>
+        <span class="tag">Git</span>
+        <span class="tag">Postman</span>
+      </div>
+    </div>
+
+    <div class="body">
+
+      <div class="section">
+        <div class="section-title">지원 동기</div>
+        <p>자바 백엔드 개발을 선택한 건 치열하게 고민한 결과였습니다. 10년 넘게 요식업을 운영하면서 배달앱, POS 시스템, 재고 관리 툴을 직접 써왔는데, 항상 불편한 부분이 있었습니다. "쓰는 입장"에 계속 있을 것인지, "만드는 입장"이 될 것인지 생각했을 때 후자가 맞다는 확신이 들었습니다.</p>
+        <p>가장 결정적인 이유는 기술의 이동성이었습니다. 장사는 가게가 있어야 하지만 개발은 어디서든 할 수 있습니다. 저는 영어를 실생활에서 사용해 온 덕분에 국내뿐 아니라 해외 환경에서도 일하는 데 언어 장벽이 없습니다. 기술과 언어가 결합되면 무대를 선택할 수 있다는 판단이 이 방향을 확신하게 만들었습니다.</p>
+        <p>KH정보교육원에서 6개월간 집중적으로 공부하면서 방향이 맞다는 걸 확인했습니다. 구조를 설계하고 오류를 추적하는 과정이 적성에 맞았고, 배울수록 모르는 게 더 많아지는 분야라는 점이 오히려 동기가 됩니다.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-title">성장 과정</div>
+        <div class="exp-item">
+          <div class="exp-title">태국 거주 및 국제학교 졸업</div>
+          <div class="exp-period">4세 ~ 20세 · 약 16년</div>
+          <div class="exp-desc">아버지의 사업으로 태국에 이주, 현지 유치원과 국제학교(초1~고3)를 졸업했습니다. 영어를 학습어가 아닌 생활어로 사용했고, 10여 개 국적의 동급생들과 공부하면서 다양한 문화권 사람들과 자연스럽게 어울리는 감각이 생겼습니다.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">건국대학교 경영학과 / 자립 아르바이트 병행</div>
+          <div class="exp-period">20대 초반</div>
+          <div class="exp-desc">재외국민 특례로 입학했지만 가정 형편이 어려워져 학비와 생활비를 전부 스스로 해결했습니다. 통역, 과외, 서빙, PC방 등 안 가리고 일했고, 이 경험이 일에 대한 태도를 만드는 기반이 됐습니다. 경영학과 특성상 매 학기 다양한 팀 프로젝트를 경험했습니다.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">요식업 창업 및 운영</div>
+          <div class="exp-period">20대 후반 ~ 30대 후반 · 10년+</div>
+          <div class="exp-desc">서빙 아르바이트로 시작해 홀 매니저를 거쳐 고깃집을 직접 창업했습니다. 이후 10년 넘게 직원 관리, 매출 분석, 재고 관리, 고객 응대, 위기 대처를 직접 맡아 운영했습니다. 코로나 이후 장사의 불확실성을 체감하면서 IT로 진로를 전환했습니다.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">KH정보교육원 Java 개발자 과정</div>
+          <div class="exp-period">2025.10 ~ 2026.04 · 6개월</div>
+          <div class="exp-desc">Java 기반 풀스택 개발 과정을 수료했습니다. 백엔드 중심으로 학습하며 팀 프로젝트까지 완료했습니다.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">성격의 장단점</div>
+        <div class="two-col">
+          <div class="col-block">
+            <div class="col-title">장점 — 지속성과 문제 추적</div>
+            <p>10년 넘게 하루 15시간씩 가게를 운영한 경험은 컨디션이나 감정에 관계없이 일을 이어가는 체질을 만들었습니다. 개발 공부에서도 이해가 안 되는 부분을 그냥 넘기지 못합니다. 답이 나올 때까지 쪼개서 확인하는 것이 저의 방식입니다.</p>
+          </div>
+          <div class="col-block">
+            <div class="col-title">단점 — 보완 중</div>
+            <p>완성도에 집착해 시작을 늦추는 경향이 있습니다. 장사할 때도 준비가 충분하지 않으면 미루다 타이밍을 놓친 적이 있습니다. 지금은 일단 동작하는 것부터 만들고 점진적으로 개선하는 방식을 훈련 중입니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">기술 역량</div>
+        <table class="skill-table">
+          <tr>
+            <td class="skill-cat">Backend</td>
+            <td class="skill-val">Java · Spring Boot · Spring MVC · JPA · MyBatis · REST API 설계</td>
+          </tr>
+          <tr>
+            <td class="skill-cat">Database</td>
+            <td class="skill-val">MySQL · 테이블 설계 · JOIN · 트랜잭션</td>
+          </tr>
+          <tr>
+            <td class="skill-cat">Frontend</td>
+            <td class="skill-val">React · JavaScript (ES6+) · HTML / CSS</td>
+          </tr>
+          <tr>
+            <td class="skill-cat">DevTools</td>
+            <td class="skill-val">Git · GitHub · Postman · IntelliJ IDEA</td>
+          </tr>
+          <tr>
+            <td class="skill-cat">Language</td>
+            <td class="skill-val">한국어 (모국어) · 영어 (원어민 수준) · 태국어 (일상 회화)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="section">
+        <div class="section-title">프로젝트 및 실무 적용</div>
+        <p>수료 전 진행한 팀 프로젝트에서는 백엔드 API 설계와 데이터베이스 연동을 담당했습니다. 컨트롤러-서비스-리포지토리 계층 구조로 기능을 분리하여 구현했으며, 회원 관리, 로그인(세션), 게시판 CRUD, REST API 등을 직접 개발했습니다.</p>
+        <div class="highlight-line">프로젝트 중 데이터가 저장되지 않는 문제가 발생했을 때, 감이 아닌 흐름 추적으로 해결했습니다. 요청값 → 서비스 로직 → 엔티티 매핑 → 쿼리 순서로 단계별로 확인하며 원인을 좁혔습니다. 이 방식이 장사할 때 "어디서 손실이 나는지 먼저 파악한다"는 습관과 같다는 것을 느꼈습니다.</div>
+        <p>팀 협업에서는 Git 브랜치를 나눠 작업하면서 충돌이 발생했을 때 혼자 덮어쓰지 않고 팀원과 소통해서 정리했습니다. 10년간 직원들과 함께 일하면서 얻은 소통 감각이 개발 협업에서도 동일하게 작동했습니다.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-title">입사 후 포부</div>
+        <p>처음 6개월은 조직의 코드 구조와 개발 방식을 빠르게 익히는 데 집중하겠습니다. 모르는 게 생기면 스스로 파악하고 정리해서 질문하는 방식으로 팀에 부담을 최소화하겠습니다. 이미 완전히 낯선 분야에서 처음부터 시작해 본 경험이 있어, 새 환경 적응에 대한 막연한 불안은 없습니다.</p>
+        <p>1~2년 후에는 자바 스프링 백엔드를 독립적으로 설계하고 성능 문제를 직접 다룰 수 있는 개발자가 되는 것이 목표입니다. 장기적으로는 영어 역량을 살려 글로벌 팀과의 협업이나 해외 근무에도 기여할 수 있는 개발자가 되고 싶습니다. 저는 지금 어디서든 일할 준비가 되어 있습니다.</p>
+      </div>
+
+    </div>
+
+    <div class="footer">자기소개서 v3 — 실무형 · 전일도</div>
+  </div>
+</body>
+</html>
