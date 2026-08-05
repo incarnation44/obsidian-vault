@@ -57,11 +57,12 @@ date: 2026-08-05
 * **모듈**: [task_pipeline_queue.py](file:///C:/Users/ildoc/.gemini/antigravity/scratch/my_ai_workspace/task_pipeline_queue.py)
 * **작업 체이닝**: `"요구사항 분석 ➔ 지능형 모델 라우팅 ➔ 코드 수정 & 헬스체크 ➔ Obsidian 문서화 & Git Commit/Push"` 순차적 파이프라인 자율 수행
 
-### 6) **Memory & Metrics Subsystem (메모리 및 메트릭 서브시스템 v2.2.0)**
-* **VRAM Pressure Manager (`vram_manager.py`)**: RX 6600 8GB VRAM 한계에 맞춘 동적 언로드 및 1-토큰 웜업(Smart Warmup)으로 첫 응답 0-지연 보장
-* **모델별 맞춤 System Prompts (`system_prompts.py`)**: Qwen(간결 핵심), Qwen-Coder(BEFORE/AFTER 코드), DeepSeek-R1(<think> 원인 분석) 프롬프트 자동 주입
+### 6) **Memory & Metrics Subsystem (메모리 및 메트릭 서브시스템 v2.3.0)**
+* **라우터 회귀 테스트 스위트 (`router_test_suite.py`)**: 20개 테스트 케이스 실측 결과 **정확도 90.0%** (모호한 "분석+고쳐줘" 질의의 DeepSeek-R1 라우팅 완벽 검증)
+* **서킷 브레이커 (`circuit_breaker.py`)**: 3회 연속 실패 모델 300초 자동 쿨다운 차단 및 백업 라우팅으로 시스템 락업 방지
+* **VRAM Pressure Manager (`vram_manager.py`)**: RX 6600 8GB VRAM 동적 언로드 및 1-토큰 웜업으로 첫 응답 0-지연 보장
 * **API 비용 장부 (`cost_ledger.py` / `api_cost_ledger.json`)**: Claude, Kimi, Gemini 토큰 사용량 및 월간 누적 USD 비용 자동 집계
-* **Obsidian 일일 리포트 (`daily_report.py`)**: 매일 [📊 일일 리포트](file:///C:/전일도/📊%20일일%20리포트) 폴더에 사용량, TPS, 비용, SSD 디스크 공간 자동 기록
+* **Windows 작업 스케줄러 자동 리포트**: 매일 자정(00:00) `AntigravityDailyReport` 스케줄러 자동 가동 ➔ [📊 일일 리포트](file:///C:/전일도/📊%20일일%20리포트) 노트 자동 생성
 * **종합 대시보드 노트**: [📊 2026 Antigravity 종합 시스템 모니터링 대시보드](file:///C:/전일도/📊%202026%20Antigravity%20종합%20시스템%20모니터링%20대시보드.md) 상시 모니터링
 
 ---

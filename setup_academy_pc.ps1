@@ -84,7 +84,16 @@ if __name__ == "__main__":
 
 Set-Content -Path "$workspace\test_local_ai.py" -Value $pyTestContent -Encoding UTF8
 
+# 5. Windows 작업 스케줄러 자동 일일 리포트 등록 (매일 00:00 실행)
+Write-Host "[5/5] 매일 자정 자동 일일 리포트 작업 스케줄러 등록 중..." -ForegroundColor Yellow
+try {
+    schtasks /create /tn "AntigravityDailyReport" /tr "python C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\daily_report.py" /sc daily /st 00:00 /f | Out-Null
+    Write-Host "✅ 작업 스케줄러 (AntigravityDailyReport) 등록 완료!" -ForegroundColor Green
+} catch {
+    Write-Host "⚠️ 작업 스케줄러 등록 스킵 (권한 설정 필요)" -ForegroundColor Yellow
+}
+
 Write-Host "==================================================" -ForegroundColor Green
-Write-Host "✅ 학원 PC 로컬 AI 및 gstack 53종 세팅이 성공적으로 완료되었습니다!" -ForegroundColor Green
+Write-Host "✅ 학원 PC 로컬 AI 및 Antigravity v2.3.0 세팅이 성공적으로 완료되었습니다!" -ForegroundColor Green
 Write-Host "이제 Antigravity를 켜서 자유롭게 사용하시면 됩니다." -ForegroundColor Green
 Write-Host "==================================================" -ForegroundColor Green
