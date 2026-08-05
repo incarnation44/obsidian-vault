@@ -64941,12 +64941,12 @@
     "file": "📊 일일 리포트/2026-08-05.md",
     "abs_path": "C:/전일도/📊 일일 리포트/2026-08-05.md",
     "chunk_id": 0,
-    "text": "---\ntitle: 📊 2026-08-05 Antigravity 일일 리포트\ntags:\n  - daily-report\n  - metrics\n  - antigravity\ndate: 2026-08-05\n---\n# 📊 2026-08-05 Antigravity 일일 사용 리포트\n## ⚡ 성능 및 세션\n- **오늘 총 요청 수**: `3` 회\n- **평균 생성 속도 (TPS)**: `41.84` tokens/sec (RX 6600 가속)\n## 💰 비용 및 토큰\n- **오늘 누적 API 비용**: `$0.0000` USD (로컬 AI 연산 = $0.00)\n## 🏥 하드웨어 및 저장 공간\n- **SSD 여유 디스크 공간**: `340.68 GB`\n- **GPU 타깃 세팅**: AMD Radeon RX 6600 (8GB"
+    "text": "---\ntitle: 📊 2026-08-05 Antigravity 일일 리포트\ntags:\n  - daily-report\n  - metrics\n  - antigravity\ndate: 2026-08-05\n---\n# 📊 2026-08-05 Antigravity 일일 사용 리포트\n## ⚡ 성능 및 세션\n- **오늘 총 요청 수**: `4` 회\n- **평균 생성 속도 (TPS)**: `42.6` tokens/sec (RX 6600 가속)\n## 💰 비용 및 토큰\n- **오늘 누적 API 비용**: `$0.0000` USD (로컬 AI 연산 = $0.00)\n## 🏥 하드웨어 및 저장 공간\n- **SSD 여유 디스크 공간**: `340.68 GB`\n- **GPU 타깃 세팅**: AMD Radeon RX 6600 (8GB V"
   },
   {
     "file": "📊 일일 리포트/2026-08-05.md",
     "abs_path": "C:/전일도/📊 일일 리포트/2026-08-05.md",
     "chunk_id": 1,
-    "text": "0.68 GB`\n- **GPU 타깃 세팅**: AMD Radeon RX 6600 (8GB VRAM) FlashAttention & ROCm 10.3.0 적용"
+    "text": ".68 GB`\n- **GPU 타깃 세팅**: AMD Radeon RX 6600 (8GB VRAM) FlashAttention & ROCm 10.3.0 적용"
   }
 ]
