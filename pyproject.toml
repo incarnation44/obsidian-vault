@@ -1,0 +1,17 @@
+[project]
+name = "antigravity-triple-hybrid-ai"
+version = "1.1.0"
+description = "Antigravity Triple Hybrid AI Orchestration Engine with Intent Routing, Fallback, Memory & Benchmarks"
+authors = [
+    { name = "Jeon Ildo", email = "ildochun@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+    "urllib3>=2.0.0",
+    "numpy>=1.24.0"
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
