@@ -70,8 +70,13 @@ date: 2026-08-05
 ### 💰 **⑥ API 토큰 비용 장부 (`cost_ledger.py`)**
 - Claude, Kimi, Gemini 호출 시 토큰 수 및 월간 USD 비용을 [api_cost_ledger.json](file:///C:/전일도/api_cost_ledger.json)에 자동 기록.
 
-### 🤖 **⑧ Multi-AI 크로스 토론 파이프라인 (`multi_ai_debate.py`)**
-- **기능**: 사용자가 지시하면 Antigravity(메인 관제), DeepSeek-R1(논리 분석), Qwen2.5(대안 합성), Claude/Kimi/Grok 브릿지가 **자기들끼리 다각도 토론(Cross Debate)을 거쳐 100% 검증된 결과물**을 도출.
+### 🤖 **⑧ 다중 모델 순차 오케스트레이션 (`multi_ai_orchestrator.py`)**
+- **개념**: AI 모델 간의 무한 자유 대화가 아니라, **각 모델의 특화 역할을 순차적으로 호출하여 서로의 출력을 교차 검토·합성(Cross-Verification & Consensus Synthesis)하는 파이프라인**.
+- **역할 분담 매트릭스 (Role Matrix)**:
+  * **Gemini 3.6 (Antigravity)**: 메인 오케스트레이터 (작업 분배, 전체 파이프라인 통합 제어)
+  * **DeepSeek-R1**: 1단계 - 논리 검증, 알고리즘 추론 및 반례 분석
+  * **Qwen-Coder**: 2단계 - 전문 파이썬/웹 코드 리팩토링 및 개선
+  * **Claude / Kimi K3 / ChatGPT / Grok**: 3단계 - 프론트엔드 UI, 100만 토큰 대용량 문서 비교, 최신 트렌드 교차 검증 및 최종 컨센서스 합성
 
 ---
 
