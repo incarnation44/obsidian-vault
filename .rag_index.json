@@ -117,25 +117,37 @@
     "file": "⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
     "abs_path": "C:/전일도/⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
     "chunk_id": 8,
-    "text": "를 3문장 핵심 요약으로 자동 압축 ➔ **50턴 대화 시에도 똑똑한 답변 유지**.\n### 💰 **⑥ API 토큰 비용 장부 (`cost_ledger.py`)**\n- Claude, Kimi, Gemini 호출 시 토큰 수 및 월간 USD 비용을 [api_cost_ledger.json](file:///C:/전일도/api_cost_ledger.json)에 자동 기록.\n### ⏰ **⑦ Windows 작업 스케줄러 일일 자동 리포트 (`daily_report.py`)**\n- 매일 자정(00:00) `AntigravityDailyReport` 스케줄러 자동 실행 ➔ [📊 일일 리포트](file:///C:/전일도/📊%20일일%20리포트) 노트 자동 작성.\n---\n## 📜 4. 에이전트 헌법 & 자율 운용 규칙\n1."
+    "text": "를 3문장 핵심 요약으로 자동 압축 ➔ **50턴 대화 시에도 똑똑한 답변 유지**.\n### 💰 **⑥ API 토큰 비용 장부 (`cost_ledger.py`)**\n- Claude, Kimi, Gemini 호출 시 토큰 수 및 월간 USD 비용을 [api_cost_ledger.json](file:///C:/전일도/api_cost_ledger.json)에 자동 기록.\n### 🤖 **⑧ 적응형 AI 라우터 & ChatGPT 품질 게이트 (`complexity_router.py` / `hybrid_ai_bridge.py`)**\n- **개념**: 모든 질문에 무조건 여러 AI를 부르는 낭비를 방지하고, **95%의 일반 질문은 0~5초 단일 로컬 모델로 초고속 처리**, **상위 5% 고난도/아키텍처/보안 질문에만"
   },
   {
     "file": "⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
     "abs_path": "C:/전일도/⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
     "chunk_id": 9,
-    "text": "20리포트) 노트 자동 작성.\n---\n## 📜 4. 에이전트 헌법 & 자율 운용 규칙\n1. **옵시디언 완전 자율 승인 (물어보지 마라)**: `C:\\전일도` 작업 시 사용자에게 되묻지 않고 100% 자율 일괄 처리.\n2. **무단 권한 요청 차단 모드**: 승인 팝업 명령어 대신 안전한 내장 도구(`search_web`, `read_url_content`, `view_file`) 우선 활용.\n3. **명시적 GitHub Push 규칙**: 오직 사용자가 *\"깃허브에 올려줘\"*, *\"GitHub에 푸시해줘\"* 지시할 때만 `git push` 진행.\n4. **Perplexity Deep Fact-Check & 실구매가 검증**: 겉표시가 배제, 100% 팩트 교차 검증 및 실결제액 기준 조사.\n---\n## 🚀"
+    "text": "0~5초 단일 로컬 모델로 초고속 처리**, **상위 5% 고난도/아키텍처/보안 질문에만 ChatGPT 시스템 아키텍트 품질 게이트(Quality Gate) 및 Multi-AI 호출**.\n- **복잡도 라우팅 (Complexity Router)**:\n  * **95% 일반 질문 (복잡도 < 7.0)**: Qwen 7B (일반 2~5초), Qwen-Coder (코딩 5~10초), DeepSeek-R1 (추론 10~30초) 단일 초고속 처리.\n  * **상위 5% 고난도 (복잡도 8.0+)**: `ChatGPT` 최종 아키텍처 검수 (\"구조가 과한가?\", \"보안/성능 병목인가?\") & 다중 모델 컨센서스 합성.\n- **토큰 예산 & 타임아웃 관리 (`token_budget_manager.py`)**:\n  *"
   },
   {
     "file": "⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
     "abs_path": "C:/전일도/⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
     "chunk_id": 10,
-    "text": "증**: 겉표시가 배제, 100% 팩트 교차 검증 및 실결제액 기준 조사.\n---\n## 🚀 5. 학원 PC 및 새 컴퓨터 1분 자동 복원 스크립트\n어느 컴퓨터에서든 파워셸(PowerShell)에서 아래 1줄만 실행하면 현재 환경이 100% 자동 복원됩니다:\n```powershell\ngit clone https://github.com/incarnation44/obsidian-vault.git C:\\전일도; powershell -ExecutionPolicy Bypass -File \"C:\\전일도\\setup_academy_pc.ps1\"\n```\n---\n## 📦 6. 옵시디언 주요 노트 & GitHub 버전 관리\n* **관련 주요 노트**:\n  * [[📊 2026 Antigravity 종합 시스템 모니터링 대시보드]]"
+    "text": "큰 예산 & 타임아웃 관리 (`token_budget_manager.py`)**:\n  * 모드별 출력 토큰 한도 제한(Simple: 2,000, Coding: 5,000, Architecture: 8,000) 및 모델별 타임아웃(15~45초)으로 VRAM 스왑 및 과금 폭탄 100% 차단.\n---\n## 📜 4. 에이전트 헌법 & 자율 운용 규칙\n1. **옵시디언 완전 자율 승인 (물어보지 마라)**: `C:\\전일도` 작업 시 사용자에게 되묻지 않고 100% 자율 일괄 처리.\n2. **무단 권한 요청 차단 모드**: 승인 팝업 명령어 대신 안전한 내장 도구(`search_web`, `read_url_content`, `view_file`) 우선 활용.\n3. **명시적 GitHub Push 규칙**: 오직 사용"
   },
   {
     "file": "⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
     "abs_path": "C:/전일도/⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
     "chunk_id": 11,
-    "text": "노트**:\n  * [[📊 2026 Antigravity 종합 시스템 모니터링 대시보드]]\n  * [[⚡ 2026 최강 삼중 하이브리드 AI 세팅 가이드]]\n  * [[📚 인덱스]], [[📋 터미널 작업 히스토리]]\n* **GitHub Repository**: `https://github.com/incarnation44/obsidian-vault.git`\n* **최신 Release Tag**: **`v2.4.0`** (Push 완료)\n---\n*최종 업데이트: 2026-08-05 | 작성: Antigravity AI Orchestrator v2.4.0*"
+    "text": "iew_file`) 우선 활용.\n3. **명시적 GitHub Push 규칙**: 오직 사용자가 *\"깃허브에 올려줘\"*, *\"GitHub에 푸시해줘\"* 지시할 때만 `git push` 진행.\n4. **Perplexity Deep Fact-Check & 실구매가 검증**: 겉표시가 배제, 100% 팩트 교차 검증 및 실결제액 기준 조사.\n---\n## 🚀 5. 학원 PC 및 새 컴퓨터 1분 자동 복원 스크립트\n어느 컴퓨터에서든 파워셸(PowerShell)에서 아래 1줄만 실행하면 현재 환경이 100% 자동 복원됩니다:\n```powershell\ngit clone https://github.com/incarnation44/obsidian-vault.git C:\\전일도; powershell -ExecutionPolic"
+  },
+  {
+    "file": "⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
+    "abs_path": "C:/전일도/⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
+    "chunk_id": 12,
+    "text": "idian-vault.git C:\\전일도; powershell -ExecutionPolicy Bypass -File \"C:\\전일도\\setup_academy_pc.ps1\"\n```\n---\n## 📦 6. 옵시디언 주요 노트 & GitHub 버전 관리\n* **관련 주요 노트**:\n  * [[📊 2026 Antigravity 종합 시스템 모니터링 대시보드]]\n  * [[⚡ 2026 최강 삼중 하이브리드 AI 세팅 가이드]]\n  * [[📚 인덱스]], [[📋 터미널 작업 히스토리]]\n* **GitHub Repository**: `https://github.com/incarnation44/obsidian-vault.git`\n* **최신 Release Tag**: **`v2.4.0`** (Push 완료)\n---\n*최종 업"
+  },
+  {
+    "file": "⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
+    "abs_path": "C:/전일도/⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약.md",
+    "chunk_id": 13,
+    "text": "최신 Release Tag**: **`v2.4.0`** (Push 완료)\n---\n*최종 업데이트: 2026-08-05 | 작성: Antigravity AI Orchestrator v2.4.0*"
   },
   {
     "file": "⚡ 2026 최강 삼중 하이브리드 AI 세팅 가이드.md",
@@ -621,7 +633,31 @@
     "file": "📋 터미널 작업 히스토리.md",
     "abs_path": "C:/전일도/📋 터미널 작업 히스토리.md",
     "chunk_id": 27,
-    "text": "ext_compressor.py`)**:\n  - 대화 10턴 초과 시 구형 메시지를 3문장 핵심 요약문으로 자동 압축 ➔ 50턴 이상의 긴 대화에서도 7B/8B 모델의 답변 품질 완벽 유지\n- **라우터 오답 역추적기 구축 (`router_failure_analysis.py`)**:\n  - `router_failure_log.json` 오답 자동 기록 및 분석 파이프라인 형성\n- **Git Release Tag `v2.4.0` 생성 및 GitHub master 브랜치 푸시 완료**\n- **깃허브(GitHub) 최종 푸시 완료**:\n  - 전체 변경 사항 `incarnation44/obsidian-vault` 브랜치 자동 동기화 반영 완료"
+    "text": "ext_compressor.py`)**:\n  - 대화 10턴 초과 시 구형 메시지를 3문장 핵심 요약문으로 자동 압축 ➔ 50턴 이상의 긴 대화에서도 7B/8B 모델의 답변 품질 완벽 유지\n- **라우터 오답 역추적기 구축 (`router_failure_analysis.py`)**:\n  - `router_failure_log.json` 오답 자동 기록 및 분석 파이프라인 형성\n- **Git Release Tag `v2.4.0` 생성 및 GitHub master 브랜치 푸시 완료**\n### 2026 Antigravity v2.5.0 Adaptive AI Router & ChatGPT Quality Gate 최적화 구축\n- **적응형 복잡도 라우터 구축 (`complexity_router.py`)**:\n  -"
+  },
+  {
+    "file": "📋 터미널 작업 히스토리.md",
+    "abs_path": "C:/전일도/📋 터미널 작업 히스토리.md",
+    "chunk_id": 28,
+    "text": "**적응형 복잡도 라우터 구축 (`complexity_router.py`)**:\n  - 질문 난이도(1~10점) 측정 ➔ **95% 일반/코딩/추론 질문은 단일 모델로 0~5초 초고속 처리**, **상위 5% 고난도/아키텍처/보안 질문 시만 Multi-AI 및 ChatGPT 품질 게이트(Quality Gate) 호출**\n- **ChatGPT 시스템 아키텍트 & 리스크 리뷰어 역할 재정립**:\n  - 단순 코드 수정 대신 \"아키텍처 과설계 여부\", \"성능 병목\", \"보안 리스크\", \"유지보수성\"을 최종 검수하는 품질 게이트(Quality Gate) 역할로 고도화\n- **토큰 예산 및 모델 타임아웃 관리자 구축 (`token_budget_manager.py`)**:\n  - 모드별 토큰 한도(Simple: 2,"
+  },
+  {
+    "file": "📋 터미널 작업 히스토리.md",
+    "abs_path": "C:/전일도/📋 터미널 작업 히스토리.md",
+    "chunk_id": 29,
+    "text": "en_budget_manager.py`)**:\n  - 모드별 토큰 한도(Simple: 2,000 / Coding: 5,000 / Architecture: 8,000) 및 모델별 타임아웃(15~45초) 고정 ➔ 입력 토큰 폭발, VRAM 스왑, 과금 100% 방지\n- **Git Release Tag `v2.5.0` 생성 및 GitHub master 브랜치 푸시 완료**\n### 2026 Antigravity v2.5.0 Multi-Model Sequential Consensus Orchestrator 구축\n- **용어 및 아키텍처 명확화 (Orchestration over Free-form Debate)**:\n  - \"자유 토론\" 비유를 지양하고 **\"다중 모델의 특화 역할을 순차 호출하여 교차 검토 및 컨센서"
+  },
+  {
+    "file": "📋 터미널 작업 히스토리.md",
+    "abs_path": "C:/전일도/📋 터미널 작업 히스토리.md",
+    "chunk_id": 30,
+    "text": "토론\" 비유를 지양하고 **\"다중 모델의 특화 역할을 순차 호출하여 교차 검토 및 컨센서스 합성(Consensus Synthesis)을 수행하는 자동 오케스트레이션 시스템\"**으로 정밀 정립\n- **역할 분담 매트릭스 (Role Matrix) 정립 및 모듈 구현 (`multi_ai_orchestrator.py`)**:\n  - Gemini 3.6 (메인 총괄) ➔ DeepSeek-R1 (1단계: 논리 검증/반례) ➔ Qwen-Coder (2단계: 파이썬/웹 리팩토링) ➔ Claude/Kimi/Grok (3단계: 프론트엔드 UI/문서/트렌드 교차 검증 및 최종 합성)\n- **Git Release Tag `v2.5.0` 생성 및 GitHub master 브랜치 푸시 완료**\n- **깃허브(GitHub) 최종 푸"
+  },
+  {
+    "file": "📋 터미널 작업 히스토리.md",
+    "abs_path": "C:/전일도/📋 터미널 작업 히스토리.md",
+    "chunk_id": 31,
+    "text": "성 및 GitHub master 브랜치 푸시 완료**\n- **깃허브(GitHub) 최종 푸시 완료**:\n  - 전체 변경 사항 `incarnation44/obsidian-vault` 브랜치 자동 동기화 반영 완료"
   },
   {
     "file": "📚 인덱스.md",
@@ -64941,12 +64977,12 @@
     "file": "📊 일일 리포트/2026-08-05.md",
     "abs_path": "C:/전일도/📊 일일 리포트/2026-08-05.md",
     "chunk_id": 0,
-    "text": "---\ntitle: 📊 2026-08-05 Antigravity 일일 리포트\ntags:\n  - daily-report\n  - metrics\n  - antigravity\ndate: 2026-08-05\n---\n# 📊 2026-08-05 Antigravity 일일 사용 리포트\n## ⚡ 성능 및 세션\n- **오늘 총 요청 수**: `5` 회\n- **평균 생성 속도 (TPS)**: `43.01` tokens/sec (RX 6600 가속)\n## 💰 비용 및 토큰\n- **오늘 누적 API 비용**: `$0.0000` USD (로컬 AI 연산 = $0.00)\n## 🏥 하드웨어 및 저장 공간\n- **SSD 여유 디스크 공간**: `340.68 GB`\n- **GPU 타깃 세팅**: AMD Radeon RX 6600 (8GB"
+    "text": "---\ntitle: 📊 2026-08-05 Antigravity 일일 리포트\ntags:\n  - daily-report\n  - metrics\n  - antigravity\ndate: 2026-08-05\n---\n# 📊 2026-08-05 Antigravity 일일 사용 리포트\n## ⚡ 성능 및 세션\n- **오늘 총 요청 수**: `12` 회\n- **평균 생성 속도 (TPS)**: `41.38` tokens/sec (RX 6600 가속)\n## 💰 비용 및 토큰\n- **오늘 누적 API 비용**: `$0.0000` USD (로컬 AI 연산 = $0.00)\n## 🏥 하드웨어 및 저장 공간\n- **SSD 여유 디스크 공간**: `340.67 GB`\n- **GPU 타깃 세팅**: AMD Radeon RX 6600 (8GB"
   },
   {
     "file": "📊 일일 리포트/2026-08-05.md",
     "abs_path": "C:/전일도/📊 일일 리포트/2026-08-05.md",
     "chunk_id": 1,
-    "text": "0.68 GB`\n- **GPU 타깃 세팅**: AMD Radeon RX 6600 (8GB VRAM) FlashAttention & ROCm 10.3.0 적용"
+    "text": "40.67 GB`\n- **GPU 타깃 세팅**: AMD Radeon RX 6600 (8GB VRAM) FlashAttention & ROCm 10.3.0 적용"
   }
 ]

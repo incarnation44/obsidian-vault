@@ -78,5 +78,21 @@
     "input_tokens": 26,
     "output_tokens": 189,
     "cost_usd": 0.0
+  },
+  {
+    "timestamp": "2026-08-05T23:33:07.242978",
+    "provider": "local-ollama",
+    "model": "qwen2.5:7b",
+    "input_tokens": 29,
+    "output_tokens": 216,
+    "cost_usd": 0.0
+  },
+  {
+    "timestamp": "2026-08-05T23:34:03.146235",
+    "provider": "local-ollama",
+    "model": "qwen2.5:7b",
+    "input_tokens": 192,
+    "output_tokens": 116,
+    "cost_usd": 0.0
   }
 ]

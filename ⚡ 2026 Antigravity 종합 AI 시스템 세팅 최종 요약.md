@@ -70,13 +70,13 @@ date: 2026-08-05
 ### 💰 **⑥ API 토큰 비용 장부 (`cost_ledger.py`)**
 - Claude, Kimi, Gemini 호출 시 토큰 수 및 월간 USD 비용을 [api_cost_ledger.json](file:///C:/전일도/api_cost_ledger.json)에 자동 기록.
 
-### 🤖 **⑧ 적응형 AI 라우터 & ChatGPT 품질 게이트 (`complexity_router.py` / `hybrid_ai_bridge.py`)**
-- **개념**: 모든 질문에 무조건 여러 AI를 부르는 낭비를 방지하고, **95%의 일반 질문은 0~5초 단일 로컬 모델로 초고속 처리**, **상위 5% 고난도/아키텍처/보안 질문에만 ChatGPT 시스템 아키텍트 품질 게이트(Quality Gate) 및 Multi-AI 호출**.
-- **복잡도 라우팅 (Complexity Router)**:
-  * **95% 일반 질문 (복잡도 < 7.0)**: Qwen 7B (일반 2~5초), Qwen-Coder (코딩 5~10초), DeepSeek-R1 (추론 10~30초) 단일 초고속 처리.
-  * **상위 5% 고난도 (복잡도 8.0+)**: `ChatGPT` 최종 아키텍처 검수 ("구조가 과한가?", "보안/성능 병목인가?") & 다중 모델 컨센서스 합성.
-- **토큰 예산 & 타임아웃 관리 (`token_budget_manager.py`)**:
-  * 모드별 출력 토큰 한도 제한(Simple: 2,000, Coding: 5,000, Architecture: 8,000) 및 모델별 타임아웃(15~45초)으로 VRAM 스왑 및 과금 폭탄 100% 차단.
+### 🤖 **⑧ 시맨틱 캐시 & 2축 리스크 라우터 (`semantic_cache.py` / `complexity_risk_router.py`)**
+- **시맨틱 캐시 서브시스템 (`semantic_cache.py` / `.semantic_cache.json`)**:
+  * 동일/유사 질의 재요청 시 LLM 및 RAG 연산을 생략하고 **0.01초 만에 캐시 답변 즉시 반환 (0 토큰 / 0 VRAM 낭비)**
+- **2축 난이도 & 보안 리스크 라우터 (`complexity_risk_router.py`)**:
+  * 단순 질문이라도 보안/비밀번호/데이터 손실 키워드 감지 시 **보안 리스크 점수(Risk Score 10.0)를 산출하여 즉시 품질/보안 게이트(Quality Gate)로 라우팅**
+- **VRAM 단일 라이프사이클 통제 (`vram_manager.py`)**:
+  * RX 6600 8GB 환경에서 동시에 여러 로컬 모델이 겹치지 않도록 단일 모델 온디맨드 VRAM 상주 및 1-토큰 웜업 적용.
 
 ---
 
