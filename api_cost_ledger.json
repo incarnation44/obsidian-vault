@@ -1,0 +1,10 @@
+[
+  {
+    "timestamp": "2026-08-05T23:13:55.235787",
+    "provider": "local-ollama",
+    "model": "qwen2.5:7b",
+    "input_tokens": 89,
+    "output_tokens": 85,
+    "cost_usd": 0.0
+  }
+]

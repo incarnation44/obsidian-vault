@@ -57,12 +57,13 @@ date: 2026-08-05
 * **모듈**: [task_pipeline_queue.py](file:///C:/Users/ildoc/.gemini/antigravity/scratch/my_ai_workspace/task_pipeline_queue.py)
 * **작업 체이닝**: `"요구사항 분석 ➔ 지능형 모델 라우팅 ➔ 코드 수정 & 헬스체크 ➔ Obsidian 문서화 & Git Commit/Push"` 순차적 파이프라인 자율 수행
 
-### 6) **Memory & Metrics Subsystem (메모리 및 메트릭 서브시스템 v2.3.0)**
-* **라우터 회귀 테스트 스위트 (`router_test_suite.py`)**: 20개 테스트 케이스 실측 결과 **정확도 90.0%** (모호한 "분석+고쳐줘" 질의의 DeepSeek-R1 라우팅 완벽 검증)
-* **서킷 브레이커 (`circuit_breaker.py`)**: 3회 연속 실패 모델 300초 자동 쿨다운 차단 및 백업 라우팅으로 시스템 락업 방지
+### 6) **Memory & Metrics Subsystem (메모리 및 메트릭 서브시스템 v2.4.0)**
+* **Obsidian 개인 지식 RAG (`obsidian_rag.py` / `.rag_index.json`)**: 10,820개+ 옵시디언 지식 청크 벡터 검색 ➔ 사용자가 정리한 보관소 노트를 자동 탐색하여 질의 시 컨텍스트 100% 주입
+* **장기 대화 스마트 맥락 압축 (`context_compressor.py`)**: 10턴 이상 누적 시 오래된 대화를 3문장 핵심 요약문으로 자동 압축하여 50턴 이상 장기 대화에서도 품질 저하 방지
+* **라우터 90.0% 검증 & 실패 추적기 (`router_failure_analysis.py`)**: 20개 스위트 중 18개 통과(90.0%) 및 오답 자동 트래킹
+* **서킷 브레이커 (`circuit_breaker.py`)**: 3회 연속 실패 모델 300초 쿨다운 차단 및 백업 모델 전환으로 시스템 락업 방지
 * **VRAM Pressure Manager (`vram_manager.py`)**: RX 6600 8GB VRAM 동적 언로드 및 1-토큰 웜업으로 첫 응답 0-지연 보장
-* **API 비용 장부 (`cost_ledger.py` / `api_cost_ledger.json`)**: Claude, Kimi, Gemini 토큰 사용량 및 월간 누적 USD 비용 자동 집계
-* **Windows 작업 스케줄러 자동 리포트**: 매일 자정(00:00) `AntigravityDailyReport` 스케줄러 자동 가동 ➔ [📊 일일 리포트](file:///C:/전일도/📊%20일일%20리포트) 노트 자동 생성
+* **Windows 작업 스케줄러 자동 리포트**: 매일 자정(00:00) `AntigravityDailyReport` 스케줄러 자동 가동 ➔ [📊 일일 리포트](file:///C:/전일도/📊%20일일%20리포트) 자동 생성
 * **종합 대시보드 노트**: [📊 2026 Antigravity 종합 시스템 모니터링 대시보드](file:///C:/전일도/📊%202026%20Antigravity%20종합%20시스템%20모니터링%20대시보드.md) 상시 모니터링
 
 ---
