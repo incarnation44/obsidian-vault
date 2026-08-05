@@ -70,13 +70,14 @@ date: 2026-08-05
 ### 💰 **⑥ API 토큰 비용 장부 (`cost_ledger.py`)**
 - Claude, Kimi, Gemini 호출 시 토큰 수 및 월간 USD 비용을 [api_cost_ledger.json](file:///C:/전일도/api_cost_ledger.json)에 자동 기록.
 
-### 🤖 **⑧ 시맨틱 캐시 & 2축 리스크 라우터 (`semantic_cache.py` / `complexity_risk_router.py`)**
-- **시맨틱 캐시 서브시스템 (`semantic_cache.py` / `.semantic_cache.json`)**:
-  * 동일/유사 질의 재요청 시 LLM 및 RAG 연산을 생략하고 **0.01초 만에 캐시 답변 즉시 반환 (0 토큰 / 0 VRAM 낭비)**
-- **2축 난이도 & 보안 리스크 라우터 (`complexity_risk_router.py`)**:
-  * 단순 질문이라도 보안/비밀번호/데이터 손실 키워드 감지 시 **보안 리스크 점수(Risk Score 10.0)를 산출하여 즉시 품질/보안 게이트(Quality Gate)로 라우팅**
-- **VRAM 단일 라이프사이클 통제 (`vram_manager.py`)**:
-  * RX 6600 8GB 환경에서 동시에 여러 로컬 모델이 겹치지 않도록 단일 모델 온디맨드 VRAM 상주 및 1-토큰 웜업 적용.
+### 🤖 **⑧ 캐시 신뢰도 평가 & 라우터 피드백 세분화 (`semantic_cache.py` / `hybrid_ai_bridge.py`)**
+- **캐시 신뢰도 평가 서브시스템 (`semantic_cache.py` / `.semantic_cache.json`)**:
+  * 질문 시맨틱 유사도, 하드웨어(RX6600_8GB), 옵시디언 컨텍스트 해시, 경과 날짜를 융합하여 **캐시 신뢰도 점수(0~100%)** 산출.
+  * **Confidence >= 95%**: 0.01초 만에 캐시 답변 즉시 반환 (0 토큰 / 0 VRAM 낭비).
+  * **Confidence 80~94%**: 캐시 답변을 힌트로 활용하여 프롬프트 보완.
+  * **Confidence < 80%**: 새 임베딩/LLM 재생성.
+- **세분화 피드백 세션 로그 (Granular Feedback Logging)**:
+  * `cache_hit_log.json`, `cache_miss_log.json`, `router_success_log.json`, `router_failure_log.json` 자동 분리 적재 ➔ 데이터 기반 개인 맞춤 라우터 자동 고도화.
 
 ---
 
