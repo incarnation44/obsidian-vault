@@ -57,10 +57,12 @@ date: 2026-08-05
 * **모듈**: [task_pipeline_queue.py](file:///C:/Users/ildoc/.gemini/antigravity/scratch/my_ai_workspace/task_pipeline_queue.py)
 * **작업 체이닝**: `"요구사항 분석 ➔ 지능형 모델 라우팅 ➔ 코드 수정 & 헬스체크 ➔ Obsidian 문서화 & Git Commit/Push"` 순차적 파이프라인 자율 수행
 
-### 6) **Memory & Benchmark Subsystem (메모리 및 메트릭 서브시스템)**
-* **대화 메모리**: `chat_history.json` (이전 대화 맥락 유지)
-* **성능 트렌드**: `benchmark_log.json` (응답 속도, TPS, 모델별 사용률 및 성공/폴백 기록)
-* **종합 헬스체크**: Ollama 서버, 모델 존재, Python 환경, 여유 디스크 용량(`disk_free_gb`) 자동 검증
+### 6) **Memory & Metrics Subsystem (메모리 및 메트릭 서브시스템 v2.2.0)**
+* **VRAM Pressure Manager (`vram_manager.py`)**: RX 6600 8GB VRAM 한계에 맞춘 동적 언로드 및 1-토큰 웜업(Smart Warmup)으로 첫 응답 0-지연 보장
+* **모델별 맞춤 System Prompts (`system_prompts.py`)**: Qwen(간결 핵심), Qwen-Coder(BEFORE/AFTER 코드), DeepSeek-R1(<think> 원인 분석) 프롬프트 자동 주입
+* **API 비용 장부 (`cost_ledger.py` / `api_cost_ledger.json`)**: Claude, Kimi, Gemini 토큰 사용량 및 월간 누적 USD 비용 자동 집계
+* **Obsidian 일일 리포트 (`daily_report.py`)**: 매일 [📊 일일 리포트](file:///C:/전일도/📊%20일일%20리포트) 폴더에 사용량, TPS, 비용, SSD 디스크 공간 자동 기록
+* **종합 대시보드 노트**: [📊 2026 Antigravity 종합 시스템 모니터링 대시보드](file:///C:/전일도/📊%202026%20Antigravity%20종합%20시스템%20모니터링%20대시보드.md) 상시 모니터링
 
 ---
 
