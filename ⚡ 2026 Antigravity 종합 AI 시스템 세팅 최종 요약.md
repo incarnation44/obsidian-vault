@@ -46,6 +46,10 @@ date: 2026-08-05
    - 오직 사용자가 *"깃허브에 올려줘"*, *"GitHub에 푸시해줘"* 라고 지시했을 때만 `git push` 진행.
 4. **Perplexity Deep Fact-Check & 실구매가 검증 헌법**:
    - 1차 검색 단정 금지, 역추적 다각도 교차 검증 및 겉표시가 배제 후 실결제액 기준 산출.
+5. **Cursor + Grok + Perplexity 3대 플랫폼 장점 통합 헌법**:
+   - **Cursor**: `.cursorrules` 컨벤션 관리 및 exact `file://` 라인 링킹(`file:///path#L10-L20`)
+   - **Grok**: 실시간 핫 트렌드 탐색 및 돌려 말하지 않는 단도직입적 명쾌한 솔루션
+   - **Perplexity**: 복잡한 질문의 다단계 Pro Search 및 100% 팩트 교차 검증 각주 제공
 
 ---
 
