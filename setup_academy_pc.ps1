@@ -9,8 +9,10 @@ Write-Host "==================================================" -ForegroundColor
 Write-Host "[1/5] Ollama (무료 로컬 AI 엔진) 설치 중..." -ForegroundColor Yellow
 winget install --id Ollama.Ollama -e --accept-package-agreements --accept-source-agreements
 
-# 2. Ollama 백그라운드 서버 실행
-Write-Host "[2/5] Ollama 백그라운드 서버 실행 중..." -ForegroundColor Yellow
+# 2. Ollama 백그라운드 서버 실행 (GPU 가속 옵티마이저 설정)
+Write-Host "[2/5] Ollama 백그라운드 서버 실행 및 RX 6600 가속 환경 설정 중..." -ForegroundColor Yellow
+$env:OLLAMA_FLASH_ATTENTION = "1"
+$env:HSA_OVERRIDE_GFX_VERSION = "10.3.0"
 $ollamaExe = "$env:LOCALAPPDATA\Programs\Ollama\ollama.exe"
 if (Test-Path $ollamaExe) {
     Start-Process -FilePath $ollamaExe -ArgumentList "serve" -WindowStyle Hidden
