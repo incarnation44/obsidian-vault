@@ -70,8 +70,8 @@ date: 2026-08-05
 ### 💰 **⑥ API 토큰 비용 장부 (`cost_ledger.py`)**
 - Claude, Kimi, Gemini 호출 시 토큰 수 및 월간 USD 비용을 [api_cost_ledger.json](file:///C:/전일도/api_cost_ledger.json)에 자동 기록.
 
-### ⏰ **⑦ Windows 작업 스케줄러 일일 자동 리포트 (`daily_report.py`)**
-- 매일 자정(00:00) `AntigravityDailyReport` 스케줄러 자동 실행 ➔ [📊 일일 리포트](file:///C:/전일도/📊%20일일%20리포트) 노트 자동 작성.
+### 🤖 **⑧ Multi-AI 크로스 토론 파이프라인 (`multi_ai_debate.py`)**
+- **기능**: 사용자가 지시하면 Antigravity(메인 관제), DeepSeek-R1(논리 분석), Qwen2.5(대안 합성), Claude/Kimi/Grok 브릿지가 **자기들끼리 다각도 토론(Cross Debate)을 거쳐 100% 검증된 결과물**을 도출.
 
 ---
 

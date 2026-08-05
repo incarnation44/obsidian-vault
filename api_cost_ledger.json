@@ -38,5 +38,13 @@
     "input_tokens": 98,
     "output_tokens": 86,
     "cost_usd": 0.0
+  },
+  {
+    "timestamp": "2026-08-05T23:27:54.275542",
+    "provider": "local-ollama",
+    "model": "deepseek-r1:8b",
+    "input_tokens": 50,
+    "output_tokens": 1605,
+    "cost_usd": 0.0
   }
 ]
