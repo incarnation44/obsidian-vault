@@ -19,9 +19,13 @@ if (Test-Path $ollamaExe) {
     Write-Host "Ollama 실행 파일을 찾는 중..." -ForegroundColor Red
 }
 
-# 3. 최적 AI 모델 다운로드 (Qwen 2.5 7B & DeepSeek-R1 8B)
-Write-Host "[3/5] Qwen 2.5 (7B) 코딩/한국어 모델 다운로드..." -ForegroundColor Yellow
-& $ollamaExe pull qwen2.5:7b
+# 3. 최적 AI 모델 다운로드 (Qwen 3.8 / 2.5 7B & DeepSeek-R1 8B)
+Write-Host "[3/5] Qwen 3.8 / 2.5 (7B/8B) 코딩/한국어 모델 다운로드 및 업그레이드..." -ForegroundColor Yellow
+& $ollamaExe pull qwen3.8
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Qwen 3.8 최신 모델 다운로드 준비 중 - qwen2.5:7b 다운로드 수행..." -ForegroundColor Yellow
+    & $ollamaExe pull qwen2.5:7b
+}
 
 Write-Host "[3/5] DeepSeek-R1 (8B) 심층 추론 모델 다운로드..." -ForegroundColor Yellow
 & $ollamaExe pull deepseek-r1:8b
