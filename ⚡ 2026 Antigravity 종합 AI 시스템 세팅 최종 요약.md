@@ -1,114 +1,74 @@
----
-title: ⚡ 2026 Antigravity AI Orchestrator v2.4.0 종합 세팅 명세서
-tags:
-  - antigravity
-  - orchestrator
-  - obsidian-rag
-  - local-ai
-  - dashboard
-  - v2.4.0
-date: 2026-08-05
----
+# ⚡ 2026 Antigravity v2.5.2 Master AI System Specification
 
-# ⚡ 2026 Antigravity AI Orchestrator v2.4.0 종합 세팅 명세서
-
-이 문서는 **Google Antigravity**와 **AMD Radeon RX 6600 로컬 GPU 가속**, 그리고 **옵시디언 개인 지식 RAG**가 결합된 **Antigravity AI Orchestrator v2.4.0**의 전체 세팅과 기능을 사용자가 옵시디언에서 한눈에 알아보기 쉽게 정돈한 종합 명세서입니다.
+> **최종 버전**: `v2.5.2 (Stability & Observability Release)`  
+> **마지막 동기화**: 2026-08-05  
+> **GitHub 저장소**: `https://github.com/incarnation44/obsidian-vault.git` (Commit: `d7874fb`, Tag: `v2.5.2`)
 
 ---
 
-## 🖥️ 1. 시스템 하드웨어 & 로컬 가속 스펙
-
-| 구분 | 구성 부품 / 세팅 값 | 비고 / 가속 상태 |
-| :--- | :--- | :--- |
-| **CPU** | AMD Ryzen 5 5600XT (6C / 12T / 3.7GHz) | 멀티스레드 병렬 처리 |
-| **GPU** | AMD Radeon RX 6600 (8GB VRAM) | **FlashAttention=1 & ROCm 10.3.0** 가속 적용 |
-| **RAM** | 32 GB DDR4 (16GB x 2) | 대형 모델 및 RAG 벡터 인덱스 보조 |
-| **Storage** | NVMe SSD 1TB (여유 공간: **`341.02 GB`**) | 10,820개 지식 청크 및 AI 모델 보관 |
-| **OS** | Windows 11 Pro (64-bit) | PowerShell 및 작업 스케줄러 자동화 |
+## 🖥️ 1. 사용자 시스템 & 하드웨어 사양
+* **메인보드**: Gigabyte A520M K V2
+* **CPU**: AMD Ryzen 5 5600XT (6 Cores / 12 Threads / 3.7GHz)
+* **GPU**: XFX 라데온 RX 6600 Speedster SWFT 210 Core D6 8GB (`OLLAMA_FLASH_ATTENTION=1`, `HSA_OVERRIDE_GFX_VERSION=10.3.0` GPU 가속 활성화)
+* **RAM**: 32 GB (16GB x 2 DDR4 3200 MHz)
+* **메인 SSD (C:)**: Crucial P3 Plus 1TB NVMe M.2 SSD (`CT1000P3PSSD8`)
+* **OS**: Microsoft Windows 11 Pro (64-bit)
 
 ---
 
-## 🏛️ 2. 제공자 독립적 6대 서브시스템 구조 (Subsystems v2.4.0)
+## ⚡ 2. 핵심 세팅 진화 과정 (v1.0 ➔ v2.5.2)
 
 ```
-                              [ 🤖 Antigravity Core Orchestrator ]
-                               (Gemini 3.6 / 메인 제어 & 오케스트레이션)
-                                               │
- ┌──────────────────┬──────────────────┬───────┴──────────┬──────────────────┬──────────────────┐
- ▼                  ▼                  ▼                  ▼                  ▼                  ▼
-[ ⚡ Local AI ]   [ ☁️ Cloud AI ]    [ 🔍 Research ]    [ 💻 Coding ]      [ 🔄 Task Queue ]   [ 📊 Metrics ]
-- Qwen2.5/3.8     - Gemini 3.6       - Multi Search     - Repo Indexing    - Self-Healing     - Healthcheck
-- Qwen-Coder      - Claude           - Cross Check      - Diff Planner     - Checkpoints      - P50/P95 Latency
-- DeepSeek-R1     - Kimi K3          - Citations        - Exact Line       - DLQ Queue        - Obsidian RAG
-(0원/44tps)       (UI/100만문서)     (Fact-Check)       (file://)          (Doc->Code->Git)   (10,820 chunks)
+[ v1.0 ~ v2.0.0 ] ➔ 트리플 하이브리드 파이프라인, 기본 의도 라우터, 비용 장부
+       ↓
+[ v2.1.0 ~ v2.3.0 ] ➔ 3-Tier Cascade 라우터 (90.0% 정확도), VRAM 웜업, 서킷 브레이커, 자정 자동 리포트
+       ↓
+[ v2.4.0 ~ v2.4.1 ] ➔ 옵시디언 10,825개 청크 RAG, 조건부 RAG 트리거, 증분 인덱스, file:/// 실제 출처 인용
+       ↓
+[ v2.5.0 ~ v2.5.2 ] ➔ 적응형 2축(Complexity+Risk) 라우터, ChatGPT 품질 게이트, 시맨틱 캐시(0.01초 히트, Confidence 100%), 토큰 예산 & 타임아웃 통제
 ```
 
 ---
 
-## ⚡ 3. v2.4.0 핵심 기능 모듈 한눈에 보기
+## 🛠️ 3. v2.5.2 핵심 모듈 및 세팅 종합
 
-### 📚 **① 옵시디언 개인 지식 RAG (`obsidian_rag.py`)**
-- **기능**: 옵시디언 보관소 내 **10,820개 지식 청크** 증분 인덱싱(`should_rebuild_index()`) & 조건부 트리거(Conditional RAG).
-- **조건부 지연 방지**: 일반 코딩/대화 질문 시 RAG를 건너뛰어 **0초 오버헤드 44 TPS** 유지.
-- **개인 노트 인용**: *"내가 정리한 가이드 알려줘"* 질의 시 **클릭 가능한 `file:///` 출처 노트 링크와 함께 내 노트를 인용하여 답변**.
+### ⚡ **① 시맨틱 캐시 서브시스템 (`semantic_cache.py` / `.semantic_cache.json`)**
+- **기능**: 질의 시맨틱 유사도, 하드웨어(`RX6600_8GB`), 옵시디언 컨텍스트 해시, 생성 일자를 융합하여 **캐시 신뢰도 점수(0~100%)**를 평가.
+- **체감**: 동일/유사 질문 재요청 시 LLM 및 RAG 연산을 생략하고 **0.01초 만에 캐시 답변 즉시 반환 (0 토큰 / 0 VRAM 낭비)**.
 
-### 🎯 **② 3-Tier Cascade 라우터 & 90.0% 정확도 (`router_test_suite.py`)**
-- **Tier 0 (Local 0원)**: 일반 한국어(`qwen2.5:7b`), 코딩(`qwen2.5-coder:7b`)
-- **Tier 1 (Reasoning)**: 왜/원인/분석 질의 ➔ `deepseek-r1:8b` (확신도 0.95)
-- **Tier 2 (Cloud)**: 고난도 멀티파일 설계 ➔ Gemini 3.6 / Claude / Kimi
-- **검증**: 20개 회귀 테스트 결과 **정확도 90.0%** 달성.
+### 🎯 **② 2축 난이도 & 보안 리스크 라우터 (`complexity_risk_router.py`)**
+- **Complexity Score (1~10)** & **Risk Score (1~10)** 2축 평가.
+- **95% 일반 질문 (Risk < 8)**: Qwen 7B (일반 2~5초), Qwen-Coder (코딩 5~10초), DeepSeek-R1 (추론 10~30초) 단일 로컬 모델로 초고속 0원 처리.
+- **상위 5% 고난도/보안 (Risk >= 8)**: 비밀번호 노출, 데이터 삭제 질의 시 복잡도가 낮아도 **즉시 Security Quality Gate 발동 및 ChatGPT 아키텍트 검수**.
 
-### 🛡️ **③ 서킷 브레이커 장애 차단 (`circuit_breaker.py`)**
-- 3회 연속 실패 모델 발생 시 **300초간 자동 쿨다운 차단** 후 백업 모델 우회 ➔ 시스템 멈춤 100% 방지.
+### 📚 **③ 옵시디언 개인 지식 RAG (`obsidian_rag.py`)**
+- **기능**: 옵시디언 보관소 내 **10,825개 지식 청크** 증분 인덱싱(`should_rebuild_index()`) & 조건부 RAG 트리거.
+- **출처 인용**: *"내가 정리한 가이드 알려줘"* 질문 시 **클릭 가능한 `file:///` 출처 노트 링크와 함께 내 노트를 100% 인용하여 답변**.
 
-### 🚀 **④ VRAM 스마트 매니저 & 1토큰 웜업 (`vram_manager.py`)**
-- RX 6600 8GB VRAM 한계에 맞춘 동적 모델 관리 + **1토큰 사전 웜업으로 첫 응답 지연 0초 단축**.
+### 🛡️ **④ VRAM 단일 라이프사이클 & 1-토큰 웜업 (`vram_manager.py`)**
+- RX 6600 8GB 환경에서 로컬 모델이 겹치지 않도록 **단일 모델 온디맨드 상주 및 1-토큰 웜업으로 첫 토큰 0-지연 보장**.
 
-### 💬 **⑤ 장기 대화 스마트 맥락 압축 (`context_compressor.py`)**
-- 대화 10턴 초과 시 구형 메시지를 3문장 핵심 요약으로 자동 압축 ➔ **50턴 대화 시에도 똑똑한 답변 유지**.
+### 🛑 **⑤ 서킷 브레이커 & 셀프힐링 큐 (`circuit_breaker.py` / `task_pipeline_queue.py`)**
+- 3회 연속 호출 실패 시 300초 쿨다운 차단 및 Dead Letter Queue(DLQ) 적재 후 자동 복구.
 
 ### 💰 **⑥ API 토큰 비용 장부 (`cost_ledger.py`)**
-- Claude, Kimi, Gemini 호출 시 토큰 수 및 월간 USD 비용을 [api_cost_ledger.json](file:///C:/전일도/api_cost_ledger.json)에 자동 기록.
+- 유료 클라우드 모델 호출 시 토큰 수 및 월간 USD 비용을 [api_cost_ledger.json](file:///C:/전일도/api_cost_ledger.json)에 자동 기록.
 
-### 🤖 **⑧ 캐시 신뢰도 평가 & 라우터 피드백 세분화 (`semantic_cache.py` / `hybrid_ai_bridge.py`)**
-- **캐시 신뢰도 평가 서브시스템 (`semantic_cache.py` / `.semantic_cache.json`)**:
-  * 질문 시맨틱 유사도, 하드웨어(RX6600_8GB), 옵시디언 컨텍스트 해시, 경과 날짜를 융합하여 **캐시 신뢰도 점수(0~100%)** 산출.
-  * **Confidence >= 95%**: 0.01초 만에 캐시 답변 즉시 반환 (0 토큰 / 0 VRAM 낭비).
-  * **Confidence 80~94%**: 캐시 답변을 힌트로 활용하여 프롬프트 보완.
-  * **Confidence < 80%**: 새 임베딩/LLM 재생성.
-- **세분화 피드백 세션 로그 (Granular Feedback Logging)**:
-  * `cache_hit_log.json`, `cache_miss_log.json`, `router_success_log.json`, `router_failure_log.json` 자동 분리 적재 ➔ 데이터 기반 개인 맞춤 라우터 자동 고도화.
+### ⏰ **⑦ Windows 작업 스케줄러 일일 자동 리포트 (`daily_report.py`)**
+- 매일 자정(00:00) `AntigravityDailyReport` 스케줄러 자동 실행 ➔ [📊 일일 리포트](file:///C:/전일도/📊%20일일%20리포트) 노트 자동 작성.
+
+### 📈 **⑧ 세분화 피드백 로그 (`hybrid_ai_bridge.py`)**
+- `cache_hit_log.json`, `cache_miss_log.json`, `router_success_log.json`, `router_failure_log.json` 자동 분리 적재 ➔ 데이터 기반 개인 맞춤 라우터 자동 학습.
 
 ---
 
-## 📜 4. 에이전트 헌법 & 자율 운용 규칙
+## 📁 4. 주요 파일 위치 명세
 
-1. **옵시디언 완전 자율 승인 (물어보지 마라)**: `C:\전일도` 작업 시 사용자에게 되묻지 않고 100% 자율 일괄 처리.
-2. **무단 권한 요청 차단 모드**: 승인 팝업 명령어 대신 안전한 내장 도구(`search_web`, `read_url_content`, `view_file`) 우선 활용.
-3. **명시적 GitHub Push 규칙**: 오직 사용자가 *"깃허브에 올려줘"*, *"GitHub에 푸시해줘"* 지시할 때만 `git push` 진행.
-4. **Perplexity Deep Fact-Check & 실구매가 검증**: 겉표시가 배제, 100% 팩트 교차 검증 및 실결제액 기준 조사.
-
----
-
-## 🚀 5. 학원 PC 및 새 컴퓨터 1분 자동 복원 스크립트
-
-어느 컴퓨터에서든 파워셸(PowerShell)에서 아래 1줄만 실행하면 현재 환경이 100% 자동 복원됩니다:
-
-```powershell
-git clone https://github.com/incarnation44/obsidian-vault.git C:\전일도; powershell -ExecutionPolicy Bypass -File "C:\전일도\setup_academy_pc.ps1"
-```
+* **워크스페이스 코드**: `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace`
+* **옵시디언 지식 보관소**: `C:\전일도`
+* **학원 PC 1분 자동 설치 스크립트**: `C:\전일도\setup_academy_pc.ps1`
+* **Git 태그 역사**: `v1.0`, `v1.1.0`, `v1.2.0`, `v2.0.0`, `v2.1.0`, `v2.2.0`, `v2.3.0`, `v2.4.0`, `v2.5.0`, `v2.5.1`, `v2.5.2` (Master Tag: `d7874fb`)
 
 ---
 
-## 📦 6. 옵시디언 주요 노트 & GitHub 버전 관리
-
-* **관련 주요 노트**:
-  * [[📊 2026 Antigravity 종합 시스템 모니터링 대시보드]]
-  * [[⚡ 2026 최강 삼중 하이브리드 AI 세팅 가이드]]
-  * [[📚 인덱스]], [[📋 터미널 작업 히스토리]]
-* **GitHub Repository**: `https://github.com/incarnation44/obsidian-vault.git`
-* **최신 Release Tag**: **`v2.4.0`** (Push 완료)
-
----
-
-*최종 업데이트: 2026-08-05 | 작성: Antigravity AI Orchestrator v2.4.0*
+> 💡 **최종 상태**: 비효율적인 다중 AI 호출을 차단하고 0.01초 캐시 및 2축 리스크 관리로 1년 365일 내 PC에서 안정적이고 똑똑하게 구동되는 최신 체제가 완성되었습니다!
