@@ -54,5 +54,29 @@
     "input_tokens": 117,
     "output_tokens": 1536,
     "cost_usd": 0.0
+  },
+  {
+    "timestamp": "2026-08-05T23:30:23.214967",
+    "provider": "local-ollama",
+    "model": "deepseek-r1:8b",
+    "input_tokens": 51,
+    "output_tokens": 2310,
+    "cost_usd": 0.0
+  },
+  {
+    "timestamp": "2026-08-05T23:30:57.379700",
+    "provider": "local-ollama",
+    "model": "deepseek-r1:8b",
+    "input_tokens": 117,
+    "output_tokens": 1096,
+    "cost_usd": 0.0
+  },
+  {
+    "timestamp": "2026-08-05T23:32:57.608784",
+    "provider": "local-ollama",
+    "model": "qwen2.5:7b",
+    "input_tokens": 26,
+    "output_tokens": 189,
+    "cost_usd": 0.0
   }
 ]

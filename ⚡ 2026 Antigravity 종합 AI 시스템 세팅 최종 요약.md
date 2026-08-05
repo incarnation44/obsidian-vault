@@ -70,13 +70,13 @@ date: 2026-08-05
 ### 💰 **⑥ API 토큰 비용 장부 (`cost_ledger.py`)**
 - Claude, Kimi, Gemini 호출 시 토큰 수 및 월간 USD 비용을 [api_cost_ledger.json](file:///C:/전일도/api_cost_ledger.json)에 자동 기록.
 
-### 🤖 **⑧ 다중 모델 순차 오케스트레이션 (`multi_ai_orchestrator.py`)**
-- **개념**: AI 모델 간의 무한 자유 대화가 아니라, **각 모델의 특화 역할을 순차적으로 호출하여 서로의 출력을 교차 검토·합성(Cross-Verification & Consensus Synthesis)하는 파이프라인**.
-- **역할 분담 매트릭스 (Role Matrix)**:
-  * **Gemini 3.6 (Antigravity)**: 메인 오케스트레이터 (작업 분배, 전체 파이프라인 통합 제어)
-  * **DeepSeek-R1**: 1단계 - 논리 검증, 알고리즘 추론 및 반례 분석
-  * **Qwen-Coder**: 2단계 - 전문 파이썬/웹 코드 리팩토링 및 개선
-  * **Claude / Kimi K3 / ChatGPT / Grok**: 3단계 - 프론트엔드 UI, 100만 토큰 대용량 문서 비교, 최신 트렌드 교차 검증 및 최종 컨센서스 합성
+### 🤖 **⑧ 적응형 AI 라우터 & ChatGPT 품질 게이트 (`complexity_router.py` / `hybrid_ai_bridge.py`)**
+- **개념**: 모든 질문에 무조건 여러 AI를 부르는 낭비를 방지하고, **95%의 일반 질문은 0~5초 단일 로컬 모델로 초고속 처리**, **상위 5% 고난도/아키텍처/보안 질문에만 ChatGPT 시스템 아키텍트 품질 게이트(Quality Gate) 및 Multi-AI 호출**.
+- **복잡도 라우팅 (Complexity Router)**:
+  * **95% 일반 질문 (복잡도 < 7.0)**: Qwen 7B (일반 2~5초), Qwen-Coder (코딩 5~10초), DeepSeek-R1 (추론 10~30초) 단일 초고속 처리.
+  * **상위 5% 고난도 (복잡도 8.0+)**: `ChatGPT` 최종 아키텍처 검수 ("구조가 과한가?", "보안/성능 병목인가?") & 다중 모델 컨센서스 합성.
+- **토큰 예산 & 타임아웃 관리 (`token_budget_manager.py`)**:
+  * 모드별 출력 토큰 한도 제한(Simple: 2,000, Coding: 5,000, Architecture: 8,000) 및 모델별 타임아웃(15~45초)으로 VRAM 스왑 및 과금 폭탄 100% 차단.
 
 ---
 
