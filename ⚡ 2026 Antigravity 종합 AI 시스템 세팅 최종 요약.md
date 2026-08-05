@@ -1,66 +1,75 @@
 ---
-title: ⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약
+title: ⚡ 2026 Antigravity 제공자 독립적 AI 오케스트레이터 아키텍처 v2.0.0
 tags:
   - antigravity
-  - summary
+  - orchestrator
+  - modular-architecture
   - local-ai
-  - ollama
-  - setup
-  - github
-  - obsidian
+  - cloud-ai
+  - task-queue
+  - v2.0.0
 date: 2026-08-05
 ---
 
-# ⚡ 2026 Antigravity 종합 AI 시스템 세팅 최종 요약
+# ⚡ Antigravity AI Orchestrator v2.0.0 (Provider-Agnostic Architecture)
 
-이 문서는 사용자의 컴퓨터에 세팅된 **Google Antigravity 에이전트, 로컬 AI 엔진(Ollama), 53종 스킬, MCP 서버, 삼중 하이브리드 아키텍처 및 무단 권한 요청 차단 환경**의 전체 세팅 내역을 종합 정리한 최종 명세서입니다.
-
----
-
-## 🖥️ 1. 사용자 시스템 & 하드웨어 사양
-- **CPU**: AMD Ryzen 5 5600XT (6 Cores / 12 Threads / 3.7GHz)
-- **GPU**: AMD 라데온 RX 6600 (VRAM 8GB) ➔ ROCm/DirectML 기반 GPU 가속 활성화
-- **RAM**: 32 GB (16GB x 2 DDR4 3200 MHz)
-- **저장장치**: 메인 Crucial P3 Plus 1TB NVMe M.2 SSD (`CT1000P3PSSD8`)
-- **OS**: Microsoft Windows 11 Pro (64-bit)
+이 문서는 특정 AI 서비스나 브랜드 이름에 종속되지 않고, **기능 모듈(Feature-Centric Modules) 중심**으로 설계된 **Antigravity AI 오케스트레이션 플랫폼 v2.0.0**의 구조 명세서입니다.
 
 ---
 
-## ⚡ 2. 구축된 삼중 하이브리드 AI 아키텍처 (Triple Hybrid Engine)
+## 🏛️ 1. 제공자 독립적 기능 모듈 아키텍처 (Feature-Centric Architecture)
 
-| 계층 (Layer) | 모델 & 엔진 | 주요 역할 및 특징 | 비용 & 효율 |
-| :--- | :--- | :--- | :--- |
-| **Layer 1 (메인 관제)** | **Google Antigravity (Gemini 3.6 Flash / Pro)** | 실시간 다각도 웹 팩트검색, 이미지 생성(`generate_image`), MCP 도구 관제, 파일/옵시디언 자동 정리 | **무료 / 무제한 (Google AI Pro)** |
-| **Layer 2 (로컬 GPU)** | **Ollama (`qwen2.5:7b` / `qwen3.8`, `deepseek-r1:8b`, `qwen2.5-coder:7b`)** | 오프라인 초고속 코딩(**44.2 tps**), 민감 파일 데이터 처리, 심층 논리 추론(`<think>`) | **100% 무료 (0원) / RX 6600 가속** |
-| **Layer 3 (외부 프런티어)** | **Claude Code & Kimi K3 Bridge** | 극상의 프론트엔드 UI 디자인(Claude), 100만 토큰 문서 요약 및 PPT 슬라이드 자동 생성(Kimi K3) | **브릿지 파이썬 모듈(`hybrid_ai_bridge.py`)로 핀포인트 연동** |
-
----
-
-## 🛠️ 3. 시스템 규칙 및 자율 수행 프로토콜 (Agent Rules & Governance)
-
-1. **옵시디언 완전 자율 승인 (No-Prompt Rule)**:
-   - 옵시디언(`C:\전일도`) 파일 생성, 수정, 정리 시 **사용자에게 재확인을 물어보지 않고 자율적 일괄 처리**.
-2. **무단 권한 요청 차단 모드**:
-   - 사용자 승인 팝업이 뜨는 터미널 명령어를 최소화하고, 권한 요청이 전혀 안 뜨는 안전한 내장 도구(`search_web`, `read_url_content`, `view_file`) 우선 활용.
-3. **명시적 GitHub Push 규칙**:
-   - 오직 사용자가 *"깃허브에 올려줘"*, *"GitHub에 푸시해줘"* 라고 지시했을 때만 `git push` 진행.
-4. **Perplexity Deep Fact-Check & 실구매가 검증 헌법**:
-   - 1차 검색 단정 금지, 역추적 다각도 교차 검증 및 겉표시가 배제 후 실결제액 기준 산출.
-5. **Cursor + Grok + Perplexity 3대 플랫폼 장점 통합 헌법**:
-   - **Cursor**: `.cursorrules` 컨벤션 관리 및 exact `file://` 라인 링킹(`file:///path#L10-L20`)
-   - **Grok**: 실시간 핫 트렌드 탐색 및 돌려 말하지 않는 단도직입적 명쾌한 솔루션
-   - **Perplexity**: 복잡한 질문의 다단계 Pro Search 및 100% 팩트 교차 검증 각주 제공
-
----
-
-## 🚀 4. 학원 PC 및 새 컴퓨터 1분 자동 복원 스크립트
-
-어느 컴퓨터에서든 파워셸(PowerShell)을 열고 아래 1줄을 실행하면 동일한 환경이 1분 만에 구성됩니다:
-
-```powershell
-git clone https://github.com/incarnation44/obsidian-vault.git C:\전일도; powershell -ExecutionPolicy Bypass -File "C:\전일도\setup_academy_pc.ps1"
+```
+                              [ 🤖 Antigravity Core Orchestrator ]
+                               (Gemini 3.6 / 메인 제어 & 오케스트레이션)
+                                               │
+ ┌──────────────────┬──────────────────┬───────┴──────────┬──────────────────┬──────────────────┐
+ ▼                  ▼                  ▼                  ▼                  ▼                  ▼
+[ ⚡ Local AI ]   [ ☁️ Cloud AI ]    [ 🔍 Research ]    [ 💻 Coding ]      [ 🔄 Task Queue ]   [ 📊 Metrics ]
+- Qwen2.5/3.8     - Gemini 3.6       - Multi Search     - Repo Indexing    - Auto Pipeline    - Healthcheck
+- Qwen-Coder      - Claude           - Cross Check      - Diff Planner     (Doc->Code->Git)   - Latency/TPS
+- DeepSeek-R1     - Kimi K3          - Citations        - Multi-file Edit                     - Memory Log
+(0원/44tps)       (Front/Doc)        (Fact-Check)       (Precise Scheme)                      (chat_history)
 ```
 
 ---
 
-*최종 업데이트: 2026-08-05 | 작성: Antigravity AI Agent*
+## 🛠️ 2. 핵심 기능 서브시스템 명세 (Subsystem Specifications)
+
+### 1) **Local AI Subsystem (로컬 추론 서브시스템)**
+* **엔진**: Ollama (`http://localhost:11434`) + AMD RX 6600 (8GB VRAM) GPU 가속
+* **서브 모델**: `qwen2.5:7b` (일반 대화 / 44tps), `qwen2.5-coder:7b` (전문 코딩), `deepseek-r1:8b` (심층 논리 추론)
+* **특징**: 100% 오프라인 동작, 프라이버시 보호, 토큰 비용 0원
+
+### 2) **Cloud AI Subsystem (클라우드 모델 서브시스템)**
+* **엔진**: Gemini 3.6 Pro/Flash (Antigravity Main), Claude (UI/디자인), Kimi K3 (대용량 문서)
+* **특징**: 고난도 멀티모달, 초대형 컨텍스트(100만 토큰), 고품질 프론트엔드 UI 제공
+
+### 3) **Research Subsystem (리서치 및 팩트검색 서브시스템)**
+* **기능**: 다단계 프로 탐색(Multi-step Search), 다각도 교차 검증(Cross-check), 공식 출처 각주 링킹(Citations)
+* **원칙**: 1차 검색 단정 금지, 실결제액 기준 조사, 역추적 교차 검증
+
+### 4) **Coding Subsystem (코딩 서브시스템)**
+* **기능**: 코드베이스 인덱싱, Multi-file Diff 플래너, exact `file://` scheme 및 라인 범위(`file:///path#L10-L20`) 링킹
+* **원칙**: 억측 금지, 원문 구문 정밀 파싱 후 안전한 리팩토링 수행
+
+### 5) **Task Pipeline Queue Subsystem (작업 큐 서브시스템)**
+* **모듈**: [task_pipeline_queue.py](file:///C:/Users/ildoc/.gemini/antigravity/scratch/my_ai_workspace/task_pipeline_queue.py)
+* **작업 체이닝**: `"요구사항 분석 ➔ 지능형 모델 라우팅 ➔ 코드 수정 & 헬스체크 ➔ Obsidian 문서화 & Git Commit/Push"` 순차적 파이프라인 자율 수행
+
+### 6) **Memory & Benchmark Subsystem (메모리 및 메트릭 서브시스템)**
+* **대화 메모리**: `chat_history.json` (이전 대화 맥락 유지)
+* **성능 트렌드**: `benchmark_log.json` (응답 속도, TPS, 모델별 사용률 및 성공/폴백 기록)
+* **종합 헬스체크**: Ollama 서버, 모델 존재, Python 환경, 여유 디스크 용량(`disk_free_gb`) 자동 검증
+
+---
+
+## 🔒 3. 재현성 및 버전 관리 (v2.0.0 Release)
+
+* **Git Release Tag**: `v2.0.0` (GitHub `https://github.com/incarnation44/obsidian-vault.git`)
+* **패키지 관리**: `pyproject.toml` 및 `requirements.txt` 이중 적용으로 Python 환경 완벽 고정
+* **1분 자동 복원**: 파워셸에서 `git clone https://github.com/incarnation44/obsidian-vault.git C:\전일도; powershell -ExecutionPolicy Bypass -File "C:\전일도\setup_academy_pc.ps1"` 단 1줄로 복원
+
+---
+
+*최종 업데이트: 2026-08-05 | 작성: Antigravity AI Orchestrator*

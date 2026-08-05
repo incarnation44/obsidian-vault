@@ -57,8 +57,10 @@
 - 상품, 티켓, 전자제품, 쿠폰 등 모든 제품 가격 조사 시, 겉으로 보이는 '대표 표시가(옵션 낚시가)'에 속지 않고 **옵션 추가금, 필수 수수료, 배송비, 조건부 가입 여부를 포함한 [실제 최종 결제 가격]**을 기준으로 조사한다.
 - 시장 시세를 안내할 때 편차를 줄이기 위해 **① 공식 정가**, **② 낚시 없는 일반 실구매 최저가**, **③ 기프티콘/중고시장 실제 거래 평균 시세**로 구분하여 편차 없이 실질적인 가격 정보만 명확히 제공한다.
 
-### 📜 규칙 8: Cursor + Grok + Perplexity 3대 플랫폼 장점 통합 헌법
-- **Cursor 장점 (코드베이스 인덱싱 & `.cursorrules`)**: 모든 코드 참조 시 exact `file://` scheme 및 라인 범위(`file:///path#L10-L20`) 링킹 준수.
-- **Grok 장점 (실시간 트렌드 & 직설적 해답)**: 최신 소셜/개발자 트렌드 탐색 및 돌려 말하지 않는 단도직입적 명쾌한 핵심 솔루션 제시.
-- **Perplexity 장점 (Deep Research & 출처 검증)**: 복잡한 질문은 2~3단계로 세분화 검색 후 100% 팩트 교차 검증 및 정확한 출처 각주 제공.
+### 📜 규칙 8: 제공자 독립적 기능 모듈 아키텍처 (Feature-Centric Subsystems v2.0.0)
+- 특정 AI 브랜드(Cursor, Grok, Perplexity 등)에 종속되지 않는 독립적 서브시스템 구조를 준수한다.
+- **Coding Subsystem**: `.cursorrules` 컨벤션 준수, Multi-file Diff 플래닝, exact `file://` scheme 및 라인 범위(`file:///path#L10-L20`) 링킹.
+- **Research Subsystem**: 실시간 웹 트렌드 탐색, 다단계 Pro Search, 100% 팩트 교차 검증 및 공식 출처 각주 링킹.
+- **Task Pipeline Queue Subsystem**: "분석 ➔ 지능형 라우팅 ➔ 구현/검증 ➔ Obsidian 문서화 ➔ Git Push" 순차적 자동화 파이프라인 자율 완수.
+- **Memory & Metrics Subsystem**: `chat_history.json`, `benchmark_log.json` 및 종합 헬스체크(Ollama, 모델, 디스크 용량) 상시 점검.
 
