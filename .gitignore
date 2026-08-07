@@ -1,2 +1,33 @@
-# Local Private Notes (Do not push to GitHub)
+# Security & Privacy Protection (.gitignore)
+
+# 1. API Keys, Tokens & Credentials
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.token
+credentials.json
+secrets/
+private/
+
+# 2. Private & Personal Files
 💻 PC 상세 하드웨어 사양 및 가속 환경.md
+*_private.md
+*비밀*
+*개인*
+
+# 3. Obsidian Internal Caches & Workspace State
+.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/trash/
+.obsidian/cache/
+
+# 4. Antigravity & Agent Temp Files
+.gemini/
+.agents/secrets/
+*.log
+*.tmp
+*.bak
+scratch/
