@@ -5,9 +5,10 @@ Write-Host "==================================================" -ForegroundColor
 Write-Host "🚀 학원 PC 2026 Antigravity v2.5.2-FINAL 1분 세팅 시작" -ForegroundColor Cyan
 Write-Host "==================================================" -ForegroundColor Cyan
 
-# 1. Winget으로 Ollama 설치
-Write-Host "[1/6] Ollama (로컬 AI 엔진) 확인 및 설치 중..." -ForegroundColor Yellow
+# 1. Winget으로 Ollama 및 개발 도구 (GitHub CLI) 설치
+Write-Host "[1/6] Ollama 및 GitHub CLI (gh) 확인 및 설치 중..." -ForegroundColor Yellow
 winget install --id Ollama.Ollama -e --accept-package-agreements --accept-source-agreements
+winget install --id GitHub.cli -e --accept-package-agreements --accept-source-agreements
 
 # 2. Ollama 백그라운드 서버 실행 (GPU 가속 옵티마이저 설정)
 Write-Host "[2/6] Ollama 백그라운드 서버 실행 및 GPU 가속 환경 설정 중..." -ForegroundColor Yellow
