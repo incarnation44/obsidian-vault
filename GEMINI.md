@@ -74,3 +74,12 @@
 - **Task Pipeline Queue Subsystem**: "분석 ➔ 지능형 라우팅 ➔ 구현/검증 ➔ Obsidian 문서화 ➔ Git Push" 순차적 자동화 파이프라인 자율 완수.
 - **Memory & Metrics Subsystem**: `chat_history.json`, `benchmark_log.json` 및 종합 헬스체크(Ollama, 모델, 디스크 용량) 상시 점검.
 
+### 📜 규칙 9: ORCA v0.1 실용적 병렬 검증 및 미니멀 아키텍처 원칙 (No Over-engineering)
+- **시스템 불변 원칙**: 기존 Antigravity, Ollama(Qwen/DeepSeek), RAG, Semantic Cache는 건드리지 않고 그대로 유지한다.
+- **오버엔지니어링 금지**: Hermes, 복잡한 Cost Router, 별도 Validator Agent를 사전에 거대하게 구축하지 않는다.
+- **1~2주 5회 실전 작업 검증**:
+  - **작업 1~2 (A/B 순수 성능 비교)**: 동일 문제/버그에 대해 독립 Worktree에서 성능/품질/규칙 준수(delete_yn 등) 비교.
+  - **작업 3~5 (실제 병렬 분업 처리)**: Worker(구현) ➔ Reviewer(diff 검증 및 회귀 테스트) ➔ Antigravity(통합 및 승인).
+- **성공 및 유지 기준**: 5개 작업 중 3개 이상에서 확실한 품질 개선 또는 시간 단축이 입증될 때만 파이프라인을 유지/고정하고, 그렇지 않으면 과감히 폐기한다.
+- **기록 및 평가**: 모든 비교 결과는 `C:\전일도\01_AI_시스템_및_도구\ORCA_v0.1_실험_가이드_및_평가표.md`에 실시간으로 자율 기록한다.
+
