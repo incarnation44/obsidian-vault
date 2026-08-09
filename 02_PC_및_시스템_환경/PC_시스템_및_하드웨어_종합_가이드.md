@@ -33,7 +33,7 @@ date: 2026-08-03
 | **메인보드** | **Gigabyte** | **Gigabyte A520M K V2** | AMD AM4 소켓, M.2 지원 |
 | **CPU (프로세서)** | **AMD** | **AMD Ryzen 5 5600XT 6-Core Processor** | 6코어 12스레드 / 3.7GHz |
 | **GPU (그래픽카드)**| **XFX (STCOM)** | **XFX 라데온 RX 6600 Speedster SWFT 210 Core D6 8GB** | VRAM 8GB GDDR6 / DirectML 가속 |
-| **RAM (메모리)** | **기타/삼성** | **DDR4 3200MHz 32GB** (16GB x 2) | 듀얼채널 구성 (3200 MHz) |
+| **RAM (메모리)** | **기타/삼성** | **DDR4 3200MHz 32GB** (16GB x 2) | 듀얼채널 (3200MHz), **FCLK 1:1 동기화 (Coupled Mode: ON / 1,600MHz)** |
 | **메인 SSD (C:)** | **Crucial** | **Crucial P3 Plus 1TB NVMe M.2 SSD (`CT1000P3PSSD8`)** | 1TB NVMe PCIe M.2 SSD |
 | **보조 SSD (D:)** | **InnoDisk** | **M.2 (P42) 3TE6 Industrial NVMe SSD** | 240GB NVMe M.2 SSD |
 | **보조 SSD (E:)** | **ADATA** | **ADATA Premier Pro SP900 128GB SSD (`SP900`)** | 128GB 2.5인치 SATA3 SSD |
