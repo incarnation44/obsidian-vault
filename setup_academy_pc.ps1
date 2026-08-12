@@ -35,16 +35,26 @@ if (-not (Test-Path $vaultPath)) {
     git -C $vaultPath pull origin master
 }
 
-# 5. 워크스페이스 디렉토리 복원
-Write-Host "[5/6] Antigravity 3대 핵심 서브시스템 복원 중..." -ForegroundColor Yellow
+# 5. 필수 파이썬 패키지 및 Docling/유튜브 도구 설치
+Write-Host "[5/7] 필수 파이썬 패키지 및 Docling / 유튜브 도구 설치 중..." -ForegroundColor Yellow
+pip install -r "$vaultPath\requirements.txt" --quiet
+
+# 6. Antigravity 전역 설정 및 스킬 복원
+Write-Host "[6/7] Antigravity 전역 규칙 및 스킬 복원 중..." -ForegroundColor Yellow
+$configDir = "$env:USERPROFILE\.gemini\config\rules"
+$skillsDir = "$env:USERPROFILE\.gemini\config\skills"
+New-Item -ItemType Directory -Force -Path $configDir | Out-Null
+New-Item -ItemType Directory -Force -Path $skillsDir | Out-Null
+Copy-Item -Path "$vaultPath\GEMINI.md" -Destination "$configDir\GEMINI.md" -Force
 $workspace = "$env:USERPROFILE\.gemini\antigravity\scratch\my_ai_workspace"
 New-Item -ItemType Directory -Force -Path $workspace | Out-Null
 
-# 6. Obsidian RAG 인덱스 증분 재빌드
-Write-Host "[6/6] 옵시디언 개인 지식 10,825개 청크 RAG 인덱싱 구축 중..." -ForegroundColor Yellow
+# 7. Obsidian RAG 인덱스 증분 재빌드
+Write-Host "[7/7] 옵시디언 개인 지식 RAG 인덱싱 구축 중..." -ForegroundColor Yellow
 python -c "import sys; sys.path.append(r'$workspace'); from obsidian_rag import build_index; build_index()"
 
 Write-Host "==================================================" -ForegroundColor Green
-Write-Host "✅ 학원 PC 2026 Antigravity v2.5.2-FINAL 세팅이 완료되었습니다!" -ForegroundColor Green
-Write-Host "이제 학원에서도 집과 100% 동일한 속도와 지식 인용으로 Antigravity를 사용하실 수 있습니다." -ForegroundColor Green
+Write-Host "✅ 새 PC 2026 Antigravity v2.5.2-FINAL 세팅이 완료되었습니다!" -ForegroundColor Green
+Write-Host "이제 새 PC에서도 집과 100% 동일한 AI 엔진, 스킬, 옵시디언 지식으로 Antigravity를 사용하실 수 있습니다." -ForegroundColor Green
 Write-Host "==================================================" -ForegroundColor Green
+
