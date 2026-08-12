@@ -43,6 +43,10 @@ Codex Worktree   Claude Code Worktree
   * `Codex`: 메인 코드 구현 및 기능 수정
   * `Claude Code`: diff 리뷰 및 회귀 테스트 보강
   * `Ollama (로컬)`: 로그 분석 및 프로젝트 구조 사전 조사
+* **🔄 반려 피드백 자동 재시도 루프 (Feedback Loop)**:
+  * 리뷰 단계(Claude Code 또는 사람)에서 반려(Reject) 시: **[직전 코드/산출물 + 반려 피드백]**을 묶어 Codex에게 전달
+  * Codex는 전체를 다시 짜지 않고 지적받은 문제점만 핀포인트로 수정 후 재검토 요청 (최대 3회 제한)
+
 
 ---
 
