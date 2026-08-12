@@ -20,11 +20,22 @@ if (Test-Path $ollamaExe) {
     Start-Sleep -Seconds 3
 }
 
-# 3. 최적 AI 모델 다운로드 (Qwen2.5 7B, Qwen2.5-Coder 7B, DeepSeek-R1 8B)
-Write-Host "[3/6] Qwen2.5 7B, Qwen2.5-Coder 7B, DeepSeek-R1 8B 모델 다운로드 중..." -ForegroundColor Yellow
-& $ollamaExe pull qwen2.5:7b
-& $ollamaExe pull qwen2.5-coder:7b
-& $ollamaExe pull deepseek-r1:8b
+# 3. 하드웨어 사양 감지 및 적응형 AI 모델 다운로드
+Write-Host "[3/7] PC 하드웨어 사양(RAM / GPU) 자동 감지 중..." -ForegroundColor Yellow
+$ramGB = [math]::Round((Get-CimInstance Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB)
+$gpus = (Get-CimInstance Win32_VideoController).Name -join ", "
+Write-Host " -> 감지된 RAM: ${ramGB}GB | GPU: $gpus" -ForegroundColor Cyan
+
+if ($ramGB -ge 16 -and ($gpus -match "NVIDIA|Radeon|RTX|GTX|RX")) {
+    Write-Host " -> [고성능 모드] 7B/8B 표준 모델 다운로드" -ForegroundColor Green
+    & $ollamaExe pull qwen2.5:7b
+    & $ollamaExe pull deepseek-r1:8b
+} else {
+    Write-Host " -> [저사양/내장그래픽 최적화 모드] 초경량 3B/1.5B 고속 모델 자동 탑재 (CPU 무리 제로)" -ForegroundColor Green
+    & $ollamaExe pull qwen2.5:3b
+    & $ollamaExe pull qwen2.5:1.5b
+}
+
 
 # 4. GitHub에서 전일도 마스터 옵시디언 보관소 클론/동기화
 Write-Host "[4/6] GitHub에서 개인 지식 옵시디언 보관소 동기화 중..." -ForegroundColor Yellow
