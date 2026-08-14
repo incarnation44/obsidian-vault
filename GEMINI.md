@@ -20,8 +20,10 @@
 ## 📁 3. 주요 폴더 및 문서 위치
 - **기본 워크스페이스**: `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace`
 - **옵시디언 메인 보관소**: `C:\전일도`
+- **비솔 Vision AI 전용 작업 & 저장소**: `E:\비솔_Vision_AI_수업과정` (모든 Vision AI 수업 자료, 실습 코드, 동영상 인덱스 전용)
 - **깃허브 저장소**: `https://github.com/incarnation44/obsidian-vault`
 - **학원 PC 1분 자동 설치 스크립트**: `C:\전일도\setup_academy_pc.ps1`
+
 
 ---
 
