@@ -1,15 +1,13 @@
 # Global Antigravity System Context (전일도 사용자 공통 규칙 & 에이전트 헌법)
 
-## 🖥️ 1. 사용자 시스템 & 하드웨어 사양
-- **메인보드**: Gigabyte A520M K V2
-- **CPU**: AMD Ryzen 5 5600XT (6 Cores / 12 Threads / 3.7GHz)
-- **GPU**: XFX 라데온 RX 6600 Speedster SWFT 210 Core D6 8GB (STCOM / 8GB VRAM) -> GPU 가속 활성화
-- **RAM**: 32 GB (16GB x 2 DDR4 3200 MHz)
-- **메인 SSD (C:)**: Crucial P3 Plus 1TB NVMe M.2 SSD (`CT1000P3PSSD8`)
-- **보조 SSD (D:)**: InnoDisk M.2 (P42) 3TE6 240GB NVMe SSD
-- **보조 SSD (E:)**: ADATA Premier Pro SP900 128GB SATA3 SSD
-- **PSU (파워)**: AONE 시그니처 750W 80PLUS BRONZE 풀모듈러 베이직 ATX 3.1
-- **OS**: Microsoft Windows 11 Pro (64-bit)
+## 🖥️ 1. 사용자 시스템 & 드라이브 역할 분담 (3-Drive Architecture)
+- **메인보드**: Gigabyte A520M K V2 / **CPU**: AMD Ryzen 5 5600XT / **GPU**: XFX 라데온 RX 6600 8GB / **RAM**: 32 GB (16GB x 2)
+- **[C: 드라이브 (1TB NVMe)] - OS / 고사양 게임 & 대형 프로그램 전용**:
+  - Windows 11 OS, 고사양 게임(Steam, Riot, 다음게임, Xbox 등), 고사양 개발툴/무거운 소프트웨어(IDE, Ollama AI, LDPlayer).
+- **[D: 드라이브 (240GB NVMe)] - 가벼운 유틸리티 & 개인 자료/문서 전용**:
+  - 가벼운 포터블 유틸리티(CPU-Z, GPU-Z, HWiNFO64, Everything, GoClean 등), 드라이버, 사진, 개인 보관 자료.
+- **[E: 드라이브 (128GB SATA3 SSD)] - 수업 과정 전체 전용**:
+  - `E:\비솔_Vision_AI_수업과정` 및 `E:\KH_Fullstack_과정` (모든 교육/강의/실습/시험자료 일원화).
 
 ## ⚡ 2. 로컬 AI (Ollama) 세팅 현황
 - **서버 엔드포인트**: `http://localhost:11434` (`ollama serve` 데몬 구동 중)
