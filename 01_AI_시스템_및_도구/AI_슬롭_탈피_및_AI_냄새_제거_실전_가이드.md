@@ -1,7 +1,24 @@
+---
+title: 🧼 AI 슬롭(Slop) 탈피 및 AI 티(냄새) 제거 실전 가이드
+tags:
+  - ai-slop
+  - coding-apple
+  - ui-design
+  - prompt-engineering
+  - writing-style
+source_url: "https://youtu.be/p5FzBvDvt8A"
+source_creator: "코딩애플 (Coding Apple)"
+source_date: 2026-08-11
+registered_date: 2026-08-14
+---
+
 # 🧼 AI 슬롭(Slop) 탈피 및 AI 티(냄새) 제거 실전 가이드
 
-> **출처 및 핵심 영감**: 코딩애플 - *AI 냄새가 싫다는 사람들* ([YouTube 영상](https://youtu.be/p5FzBvDvt8A))  
-> **핵심 주제**: 웹 UI, 이미지, 텍스트 글쓰기 전반에서 흔히 풍기는 천편일률적 AI 불쾌감을 걷어내고 완성도 높은 결과물을 뽑아내는 실전 기법
+> **📌 아카이빙 메타데이터**
+> - **원본 출처**: [코딩애플 YouTube (https://youtu.be/p5FzBvDvt8A)](https://youtu.be/p5FzBvDvt8A)
+> - **출처 정보 발행일자**: `2026-08-11`
+> - **내 보관소 등록일자**: `2026-08-14`
+> - **핵심 주제**: 웹 UI, 이미지, 텍스트 글쓰기 전반에서 흔히 풍기는 천편일률적 AI 불쾌감을 걷어내고 완성도 높은 결과물을 뽑아내는 실전 기법
 
 ---
 

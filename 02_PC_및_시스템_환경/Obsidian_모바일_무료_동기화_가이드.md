@@ -1,7 +1,24 @@
+---
+title: 📱 옵시디언 모바일 무료 동기화 가이드 (Remotely Save + GitHub)
+tags:
+  - obsidian
+  - remotely-save
+  - github
+  - mobile-sync
+  - free-sync
+source_url: "https://github.com/remotely-save/remotely-save"
+source_creator: "Remotely Save Community"
+source_date: 2026-08-07
+registered_date: 2026-08-14
+---
+
 # 📱 옵시디언 모바일 무료 동기화 가이드 (Remotely Save + GitHub)
 
-> **생성일**: 2026-08-07  
-> **목적**: Obsidian Sync(유료) 없이 PC와 스마트폰(iOS/Android) 간의 보관소 노트 100% 무료 실시간 동기화 세팅 가이드
+> **📌 아카이빙 메타데이터**
+> - **원본 출처**: [Remotely Save GitHub (https://github.com/remotely-save/remotely-save)](https://github.com/remotely-save/remotely-save)
+> - **출처 정보 발행일자**: `2026-08-07`
+> - **내 보관소 등록일자**: `2026-08-14`
+> - **목적**: Obsidian Sync(유료) 없이 PC와 스마트폰(iOS/Android) 간의 보관소 노트 100% 무료 실시간 동기화 세팅 가이드
 
 ---
 
