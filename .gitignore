@@ -31,3 +31,13 @@ private/
 *.tmp
 *.bak
 scratch/
+
+# 5. Large Media & Video Files (No GitHub Upload)
+*.mp4
+*.m4a
+*.avi
+*.mkv
+*.mov
+*.wav
+*.flac
+
