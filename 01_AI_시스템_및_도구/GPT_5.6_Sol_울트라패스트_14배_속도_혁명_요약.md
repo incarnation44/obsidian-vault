@@ -57,3 +57,6 @@ graph TD
 - [[01_AI_시스템_및_도구/Antigravity_웹사이트_감사_및_슬래시_goal_자율루프_가이드|Antigravity /goal 자율 루프]]
 - [[01_AI_시스템_및_도구/AI_에이전트_및_도구_통합_마스터_가이드|AI 에이전트 통합 마스터 가이드]]
 - [[인덱스]]
+
+## 관련
+- [[AI_뉴스브리핑_ChatGPT_Ultrafast_Grok4.6_오픈소스3종]]

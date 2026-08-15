@@ -79,3 +79,6 @@
 <h3>2. Intellectual Property</h3>
 <p>All articles, formatting, and guides on this site are the intellectual property of <strong>From Europe to Seoul</strong>. Unauthorized reproduction, distribution, or commercial reuse without written permission is strictly prohibited.</p>
 ```
+
+## 관련
+- 목차: [[04_부업_및_수익화_자동화/00_수익화_자동화_대시보드]]

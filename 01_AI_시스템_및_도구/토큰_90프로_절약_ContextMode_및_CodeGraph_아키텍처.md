@@ -39,3 +39,7 @@ python "C:\Users\ildoc\.gemini\config\skills\code-graph-context\scripts\build_gr
 ```powershell
 python "C:\Users\ildoc\.gemini\config\skills\code-graph-context\scripts\build_graph.py" --root "<프로젝트_경로>" --export-json "dependency_graph.json"
 ```
+
+## 관련
+- [[유튜브_FasterWhisper_음성인식_STT_자동추출_시스템]]
+- [[그래프_엔지니어링_차세대_AI에이전트_오케스트레이션_완전정복]]

@@ -1,22 +1,86 @@
 {
-  "collapse-filter": true,
-  "search": "",
+  "collapse-filter": false,
+  "search": "-path:.agents -path:_templates -path:scripts -file:00_폴더안내 -file:SKILL -file:00_템플릿안내",
   "showTags": false,
   "showAttachments": false,
-  "hideUnresolved": false,
-  "showOrphans": true,
-  "collapse-color-groups": true,
-  "colorGroups": [],
-  "collapse-display": true,
+  "hideUnresolved": true,
+  "showOrphans": false,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "file:인덱스",
+      "color": {
+        "a": 1,
+        "rgb": 16096779
+      }
+    },
+    {
+      "query": "path:00_SecondBrain",
+      "color": {
+        "a": 1,
+        "rgb": 2972227
+      }
+    },
+    {
+      "query": "path:01_AI",
+      "color": {
+        "a": 1,
+        "rgb": 2450411
+      }
+    },
+    {
+      "query": "path:02_PC",
+      "color": {
+        "a": 1,
+        "rgb": 6583435
+      }
+    },
+    {
+      "query": "path:03_운영",
+      "color": {
+        "a": 1,
+        "rgb": 889992
+      }
+    },
+    {
+      "query": "path:04_부업",
+      "color": {
+        "a": 1,
+        "rgb": 14251782
+      }
+    },
+    {
+      "query": "path:04_개발",
+      "color": {
+        "a": 1,
+        "rgb": 8141549
+      }
+    },
+    {
+      "query": "path:05_일일",
+      "color": {
+        "a": 1,
+        "rgb": 9741240
+      }
+    },
+    {
+      "query": "path:06_비솔",
+      "color": {
+        "a": 1,
+        "rgb": 366185
+      }
+    }
+  ],
+  "collapse-display": false,
   "showArrow": false,
-  "textFadeMultiplier": 0,
-  "nodeSizeMultiplier": 1,
-  "lineSizeMultiplier": 1,
-  "collapse-forces": true,
-  "centerStrength": 0.518713248970312,
-  "repelStrength": 10,
-  "linkStrength": 1,
-  "linkDistance": 250,
-  "scale": 1,
+  "textFadeMultiplier": -2.5,
+  "nodeSizeMultiplier": 1.15,
+  "lineSizeMultiplier": 0.85,
+  "collapse-forces": false,
+  "centerStrength": 0.4,
+  "repelStrength": 14,
+  "linkStrength": 0.6,
+  "linkDistance": 320,
+  "scale": 1.6,
   "close": true
 }

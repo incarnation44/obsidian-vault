@@ -1,0 +1,6 @@
+{
+  "format": "YYYY-MM-DD",
+  "folder": "05_일일_리포트",
+  "template": "_templates/03_일일리포트",
+  "autorun": false
+}

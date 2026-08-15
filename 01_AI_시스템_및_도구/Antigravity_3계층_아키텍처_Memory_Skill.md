@@ -95,3 +95,7 @@ python C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\core\trust_lay
 ## 🚀 4. 등록된 전역 에이전트 스킬 (Global Skills)
 - `book-to-skill`: `C:\Users\ildoc\.gemini\config\skills\book-to-skill\SKILL.md`
 - `agent-memory`: `C:\Users\ildoc\.gemini\config\skills\agent-memory\SKILL.md`
+
+## 관련
+- [[Hermes_Agent_분석_및_Antigravity_v3_통합_아키텍처]]
+- [[AI_에이전트_및_도구_통합_마스터_가이드]]

@@ -37,3 +37,7 @@ python "C:\Users\ildoc\.gemini\config\skills\youtube-transcribe\scripts\transcri
 - `--model base`: 가장 빠르고 정확한 한국어 기본 모델 (권장 ⭐)
 - `--model small`: 전문 용어나 영어 혼용이 많은 강의용 고정밀 모델
 - `--lang ko`: 한국어 강제 지정
+
+## 관련
+- [[토큰_90프로_절약_ContextMode_및_CodeGraph_아키텍처]]
+- [[05_일일_리포트/2026-08-13_시스템_최적화_및_SOTA스킬_원룸단열_통합리포트]]

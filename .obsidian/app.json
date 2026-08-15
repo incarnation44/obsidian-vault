@@ -3,5 +3,9 @@
   "livePreview": true,
   "spellcheck": false,
   "useMarkdownLinks": false,
-  "newFileLocation": "current"
+  "newFileLocation": "current",
+  "userIgnoreFilters": [
+    ".agents/"
+  ],
+  "promptDelete": false
 }

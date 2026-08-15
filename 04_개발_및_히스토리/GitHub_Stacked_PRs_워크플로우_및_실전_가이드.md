@@ -96,3 +96,7 @@ gh pr create --base feat/step1-data-model --head feat/step2-business-logic --tit
 ## 🔗 연관 문서
 * [[인덱스]] - 옵시디언 메인 대시보드
 * [[04_개발_및_히스토리/코딩_및_개발_지식_정리]] - 핵심 개발 지식 정리
+
+## 관련
+- [[코딩_및_개발_지식_정리]]
+- [[React_웹에서_ReactNative_모바일앱_개발_핵심_가이드]]
