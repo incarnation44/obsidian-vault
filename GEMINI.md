@@ -28,7 +28,7 @@
 ## 🖥️ 1. 사용자 시스템 & 하드웨어 사양
 
 - **메인보드**: Gigabyte A520M K V2
-- **CPU**: AMD Ryzen 5 5600XT (6 Cores / 12 Threads / 3.7GHz)
+- **CPU**: AMD Ryzen 5 5600X (6 Cores / 12 Threads / 3.7GHz)
 - **GPU**: XFX 라데온 RX 6600 Speedster SWFT 210 Core D6 8GB (STCOM / 8GB VRAM) -> GPU 가속 활성화
 - **RAM**: 32 GB (16GB x 2 DDR4 3200 MHz)
 - **메인 SSD (C:)**: Crucial P3 Plus 1TB NVMe M.2 SSD (`CT1000P3PSSD8`)
@@ -45,7 +45,8 @@
 
 - **서버 엔드포인트**: `http://localhost:11434` (`ollama serve` 데몬이 **떠 있을 때만** 사용)
 - **설치된 최적화 모델**:
-  - `qwen2.5:7b` (44.72 tps - 코딩/한국어/일반 대화)
+  - `qwen2.5-coder:7b` (44.17 tps - 로컬 코딩/스크립트/디버깅 메인)
+  - `qwen2.5:7b` (44.06 tps - 한국어/일반 대화)
   - `deepseek-r1:8b` (38.64 tps - 심층 논리 추론)
 - Gemini/Antigravity 클라우드 추론과 무관하다. Ollama 실패를 Gemini 실패로 보고하지 마라.
 
@@ -153,7 +154,9 @@
   - **Select (선택적 주입)**: 전체 문서를 무차별 적재하지 않고 `chunkless-rag` 등으로 핵심 팩트만 정밀 추출.
   - **Compress (주기적 압축)**: 길어진 대화는 3줄 요약으로 압축하여 환각(Poisoning) 및 주의 분산(Distraction) 원천 차단.
   - **Isolate (서브에이전트 격리)**: 대규모 조사 작업은 `research` 서브에이전트로 격리 수행 후 요약본만 수신.
-  - **3) 오디오 / 음성 처리 요청 시 (`audio.cpp` 로컬 우선)**:
+- **3) 오디오 / 음성 처리 요청 시 (`audio.cpp` 로컬 우선)**:
   - 유료 API 결제 대신 로컬 C++ 엔진과 8GB VRAM 최적화 설정을 우선 활용.
 - **4) 커리어 / 역량 / 포트폴리오 정리 요청 시 (전이 역량 매핑)**:
   - 옵시디언 축적 지식과 개발 이력을 바탕으로 '전이 가능한 역량(Transferable Skills)'을 도출하여 1인 사업 프로필 및 포트폴리오로 자동 구조화.
+
+
