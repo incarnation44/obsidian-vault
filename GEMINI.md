@@ -104,6 +104,8 @@
 | code-graph-context | `C:\Users\ildoc\.gemini\config\skills\code-graph-context\scripts\build_graph.py` |
 | book-to-skill | `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\core\book_to_skill.py` |
 | agent-memory | `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\core\agent_memory.py` — SQLite: `...\my_ai_workspace\.agents\memory\memory.db` |
+| diagram-design | `C:\Users\ildoc\.gemini\config\skills\diagram-design\scripts\diagram_engine.py` |
+| obsidian-skills | `C:\Users\ildoc\.gemini\config\skills\obsidian-skills\scripts\vault_ops.py` |
 
 전역 스킬 디렉터리: `C:\Users\ildoc\.gemini\config\skills\`  
 워크스페이스 운영 체크리스트: `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\ANTIGRAVITY_STANDALONE.md`
