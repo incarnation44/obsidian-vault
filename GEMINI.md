@@ -187,3 +187,17 @@
 - **10) WebMCP 기반 Agent-Ready 웹 개발 & 브라우저 자동화 (WebMCP & 2-Way Hybrid Harness)**:
   - **인페이지 툴 계약 (In-Page Tool Contract)**: 웹 서비스 개발 시 페이지별 문맥(Page-Contextual Tools)에 맞춘 정형 툴 인터페이스를 노출하여 에이전트의 DOM 파싱 에러 및 토큰 소모를 90% 이상 감축.
   - **CLI-브라우저 2-Way 시각적 피드백**: 복잡한 데이터 파이프라인/변환 작업 시 터미널에서 경량 실행 후 브라우저 개발자 포털/대시보드에 스테이징 실행을 트리거하여 데이터 계통 및 로그를 실시간 시각적으로 모니터링.
+- **11) 에이전트 중심 문서 아키텍처 & OKF 범용 메모리 (Agent-First Docs & OKF Memory)**:
+  - **파편 검색 최적화 (Self-Contained Snippets)**: 문서는 긴 줄글이나 서론 대신 독립 단락 구조와 명확한 헤딩을 적용하여 에이전트가 핀셋 추출할 때 불필요한 토큰 소모를 차단.
+  - **Google OKF 정형 프론트매터 표준화**: 모든 지식 및 기술 문서 상단에 `type`, `title`, `description`, `tags` YAML 메타데이터를 강제하여 RAG 및 필터링 적중률 극대화.
+  - **LLM Wiki 3대 축 & 다이어그램 결합**: `quickstart.md`(전체 조망), `index.md`(색인), `log.md`(변경 델타 추적) 구조를 기본 유지하며, 핵심 로직은 Mermaid 다이어그램을 병행 배치하여 인간 가독성과 에이전트 공간 추론력을 동시 확보.
+
+
+
+
+
+
+
+
+
+
