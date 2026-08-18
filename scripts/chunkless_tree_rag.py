@@ -3,6 +3,11 @@ Chunkless Tree RAG & Document Structure Navigator
 --------------------------------------------------
 Parses PDFs, DOCX, Markdown, HTML using Docling / Hierarchical AST
 and provides an outline-based Tree Navigation API for AI Agents.
+
+Features:
+1. Hierarchical Heading AST Parsing
+2. Auto-Labeling & Cluster-Focused RAG (Gemini Notebook Pattern)
+3. Gap-Driven Knowledge Deficit Detector
 """
 
 import sys
@@ -79,7 +84,6 @@ def parse_document(file_path: str) -> dict:
             tree = parse_markdown_tree(md_content)
             return {"file": str(path), "type": ext, "tree": tree}
         except Exception as e:
-            # Fallback simple reader if docling is not fully loaded
             return {"file": str(path), "type": ext, "error": str(e)}
             
     return {"error": f"Unsupported extension: {ext}"}
@@ -105,10 +109,58 @@ def find_section(tree_node: dict, query_title: str) -> dict:
             return res
     return None
 
+def auto_cluster_documents(dir_path: str) -> dict:
+    """
+    Auto-Labels and clusters documents in a directory into logical topics
+    (Gemini Notebook Auto-Labeling Pattern).
+    """
+    target = Path(dir_path)
+    if not target.exists():
+        return {"error": f"Directory not found: {dir_path}"}
+        
+    clusters = {
+        "AI_시스템_및_모델": [],
+        "시스템_하드웨어_및_OS": [],
+        "부업_및_수익화_자동화": [],
+        "비솔_Vision_AI_학습": [],
+        "생활_및_운영_관리": [],
+        "기타_일반_자료": []
+    }
+    
+    files = list(target.glob("**/*.md"))
+    for f in files:
+        fname = f.name.lower()
+        rel_path = str(f.relative_to(target))
+        
+        if any(k in fname for k in ['ai', 'gemini', 'grok', 'qwen', 'llm', 'rag', 'agent', 'spark', 'hermes', 'deepseek']):
+            clusters["AI_시스템_및_모델"].append(rel_path)
+        elif any(k in fname for k in ['pc', '윈도우', '하드웨어', '노트북', '단열', '곰팡이', '도킹', '셋업']):
+            clusters["시스템_하드웨어_및_OS"].append(rel_path)
+        elif any(k in fname for k in ['부업', '수익', '자동화', '시트', '사업', '스마트스토어']):
+            clusters["부업_및_수익화_자동화"].append(rel_path)
+        elif any(k in fname for k in ['비솔', 'vision', '시험', '족보', '수업']):
+            clusters["비솔_Vision_AI_학습"].append(rel_path)
+        elif any(k in fname for k in ['체크리스트', 'esim', '알뜰폰', '면도기', '운영']):
+            clusters["생활_및_운영_관리"].append(rel_path)
+        else:
+            clusters["기타_일반_자료"].append(rel_path)
+            
+    # Filter out empty clusters
+    return {k: v for k, v in clusters.items() if v}
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python chunkless_tree_rag.py <file_path> [--outline | --get <section_title>]")
+        print("Usage:")
+        print("  1. Single Doc AST:   python chunkless_tree_rag.py <file_path> [--outline | --get <title>]")
+        print("  2. Auto Clustering:  python chunkless_tree_rag.py --cluster <dir_path>")
         sys.exit(1)
+        
+    if sys.argv[1] == "--cluster":
+        dir_path = sys.argv[2] if len(sys.argv) > 2 else "."
+        clusters = auto_cluster_documents(dir_path)
+        print("\n=== AUTO-LABELED DOCUMENT CLUSTERS (Gemini Notebook Pattern) ===")
+        print(json.dumps(clusters, ensure_ascii=False, indent=2))
+        sys.exit(0)
         
     doc_path = sys.argv[1]
     parsed = parse_document(doc_path)
