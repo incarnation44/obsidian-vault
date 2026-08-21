@@ -1,4 +1,4 @@
-﻿---
+---
 title: "내일 세션 시작 체크리스트: Antigravity 라이브 신기능 & 3대 기기 Remote Control 통합 가동"
 category: "03_운영_및_체크리스트"
 created_date: "2026-08-22"
@@ -26,15 +26,12 @@ tags: ["체크리스트", "RemoteControl", "Antigravity", "HermesAgent", "다음
 
 ---
 
-## 🎯 2. 내일 접속 시 즉시 실행할 3대 액션 (Next Steps)
+## 🎯 2. 내일 접속 시 즉시 실행할 핵심 액션 (Next Steps - Antigravity & Remote 집중)
 
-### Step 1. 어제 라이브 신규 발표 내용 브리핑 확인
-- 접속 즉시 *"어제 라이브 요약해줘"* 라고 호출하면 밤새 정리된 신규 기능/로드맵/업데이트 팁을 즉시 보고.
+### Step 1. 라이브 신규 발표 분석 브리핑 확인
+- 접속 즉시 *"어제 라이브 요약해줘"* 호출 시 밤새 정리된 신규 기능/로드맵/업데이트 팁 즉시 보고 및 Antigravity 시스템 반영.
 
-### Step 2. 3대 기기(본체 ↔ S24 FE ↔ 서브 노트북) Remote Control 실전 연결
+### Step 2. 3대 기기(본체 ↔ S24 FE ↔ 서브 노트북) Remote Control 실전 연결 & 관제
 1. 스마트폰(S24 FE) 브라우저에서 `https://antigravity.google.com` 새로고침 ➡️ `Ildo-Desktop` [Connect] 클릭.
 2. 서브 노트북(Dell Latitude 7440)에서도 동일하게 `https://antigravity.google.com` 접속 ➡️ 연결.
-3. 스마트폰에서 프롬프트를 입력하고, 본체 PC에서 코드가 수정되는 2-Way 실시간 원격 제어 및 푸시 알림 검증.
-
-### Step 3. Antigravity ↔ Hermes Agent 멀티 에이전트 교차 검증 테스트
-- 메인 지휘관(Antigravity)과 서브 워커(Hermes Agent Solar Pro) 간의 역할 분담 실전 가동.
+3. 스마트폰/노트북에서 원격으로 프롬프트를 입력하고, 본체 PC에서 실제 코딩 및 터미널이 실행되는 2-Way 실시간 원격 제어 및 모바일 푸시 알림/Diff 승인 루프 완전 검증.
