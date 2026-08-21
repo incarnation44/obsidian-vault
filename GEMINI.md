@@ -29,8 +29,9 @@
 
 ---
 
-## 🖥️ 1. 사용자 시스템 & 하드웨어 사양
+## 🖥️ 1. 사용자 시스템 & 하드웨어 사양 (데스크톱 & 서브 노트북)
 
+### 🖥️ 메인 데스크톱 (Ildo 본체)
 - **메인보드**: Gigabyte A520M K V2
 - **CPU**: AMD Ryzen 5 5600X (6 Cores / 12 Threads / 3.7GHz)
 - **GPU**: XFX 라데온 RX 6600 Speedster SWFT 210 Core D6 8GB (STCOM / 8GB VRAM) -> GPU 가속 활성화
@@ -41,17 +42,26 @@
 - **PSU (파워)**: AONE 시그니처 750W 80PLUS BRONZE 풀모듈러 베이직 ATX 3.1
 - **OS**: Microsoft Windows 11 Pro (64-bit)
 
+### 💻 서브 노트북 (Dell Latitude 7440)
+- **CPU**: Intel 13th Gen Core i5-1345U (10 Cores / 12 Threads / 1.6~4.7GHz)
+- **GPU**: Intel Iris Xe Graphics (내장 그래픽, 전용 VRAM 없음 / 시스템 RAM 공유)
+- **RAM**: 32 GB (LPDDR5 4800MHz)
+- **주요 용도**: 이동식 업무, 필기, 원격 코딩, 경량 AI
+
 하드웨어 사양을 추측하거나 새로 만들지 마라. 위 목록이 진실이다.
 
 ---
 
-## ⚡ 2. 로컬 AI (Ollama) — 선택, Gemini 필수 아님
+## ⚡ 2. 로컬 AI (Ollama) & 기기별 로컬설정 지침
 
-- **서버 엔드포인트**: `http://localhost:11434` (`ollama serve` 데몬이 **떠 있을 때만** 사용)
-- **설치된 최적화 모델**:
+- **데스크톱 Ollama 최적화 모델 (8GB VRAM 활용)**:
   - `qwen2.5-coder:7b` (44.17 tps - 로컬 코딩/스크립트/디버깅 메인)
   - `qwen2.5:7b` (44.06 tps - 한국어/일반 대화)
   - `deepseek-r1:8b` (38.64 tps - 심층 논리 추론)
+- **노트북 로컬설정 지침 (사용자가 "노트북에서 로컬설정" 질문 시)**:
+  - 1순위 (기본): **Antigravity 클라우드 (Gemini 3.7 Flash)** 우선 활용 (배터리/발열 0, 초고속).
+  - 2순위 (오프라인 필수 시): `Qwen2.5-Coder-3B (Q8_0)` 등 **3B 이하 초경량 모델**만 제한적 구동 (15~20 tok/s).
+  - 8B 이상(`deepseek-r1:8b`, `qwen2.5:7b`)은 외장 VRAM 부재로 속도가 7.5 tok/s 이하로 급감하고 배터리 급방전/팬 소음이 발생하므로 **노트북 로컬 구동 비추천**.
 - Gemini/Antigravity 클라우드 추론과 무관하다. Ollama 실패를 Gemini 실패로 보고하지 마라.
 
 ---
