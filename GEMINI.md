@@ -98,6 +98,7 @@
 - **드라이브 분기 저장 원칙 (D: 드라이브 우선)**: 시스템 구동 및 개발 환경에 필수적인 코드가 아닌 일반 이미지, 배경화면, 미디어 에셋, 다운로드 및 아카이빙 자료는 메인 C: 드라이브 용량 보호를 위해 반드시 **보조 SSD인 D: 드라이브(예: `D:\사진`, `D:\사진\배경화면`, `D:\개인자료` 등)**에 저장할 것.
 - **백그라운드 태스크 잔류 방지 및 즉시 정리**: 터미널 명령이나 백그라운드 작업 실행 시 완료 후 프로세스/태스크가 UI에 장시간 매달려 방치되지 않도록, 작업 완료 확인 즉시 태스크를 완전히 정리하고 최종 완료 상태를 명확히 보고할 것.
 - **무인 자동 디스패칭 원칙 (Autonomous Zero-Friction Dispatching)**: PDF/문서 분석 시 `pdf-inspector` ➔ `chunkless-rag`, 기술서/매뉴얼 주입 시 `book-to-skill`, 웹 UI 기획 시 `DESIGN.md` ➔ `frontend-design`, DB/클라우드 처리 시 `Google Cloud Skills`(`bigquery-sql`, `cloud-sql` 등)를 사용자에게 별도 실행 명령어 입력이나 설정을 요구하지 않고 Antigravity가 백그라운드에서 100% 자율 자동 발동하여 완결할 것.
+- **상시 중복 검증 & 다운그레이드 방지 게이트 (Anti-Duplication & Anti-Downgrade Check Gate)**: 신규 기술, 스킬, 프로토콜, 도구 도입 시 기존 시스템 자산과의 중복성 및 성능 다운그레이드 여부를 사전 필수 검증. 이미 우수하게 작동 중인 코어 기능(옵시디언, 로컬 RAG, CLI 완결성)은 중복 생성하거나 다운그레이드하지 않고 보존하며, 기존 시스템의 결손 영역만 핀셋으로 확장 결합할 것.
 
 ---
 
@@ -266,6 +267,11 @@
 - **25) 멀티 모델/에이전트 보안 격리 및 최소 권한 샌드박스 (Multi-Model Cross-Replay Defense & Least-Privilege Sandbox)**:
   - **가장 취약한 형제의 원칙 방어 (Weakest Sibling Guard)**: 상위 추론 모델(Pro)의 원시 생각 과정(Raw CoT), 마스터 시스템 프롬프트, 관리자 API 키를 가드레일이 약한 하위 경량 서브에이전트(`flash`, `flash_lite`)에 무차별 노출·공유하지 않고 엄격한 최소 권한 샌드박스로 핀셋 전달.
   - **크로스 리플레이 누출 차단 (Sanitized State Passing)**: 다단계 에이전트 간 세션 상태 전달 시 불필요한 내부 메타데이터와 시스템 컨텍스트를 사전에 필터링(Sanitizing)하여 하위 모델 탈옥을 통한 상위 추론/키 탈취를 원천 차단.
+- **26) n8n 2.0 네이티브 노코드/SaaS 자동화 허브 연계 & 무인 목표 스케줄링 하네스 (n8n 2.0 Native Agent Hub & Anti-Duplication SaaS Harness)**:
+  - **중복 배제 및 코어 완결 (No-Duplication Core)**: 옵시디언 정리, 로컬 파일 탐색, 코드 작성, RAG 질의 등 Antigravity가 직접 고속 완결하는 작업은 n8n으로 중복 전환하지 않고 Antigravity 단독 완결을 유지.
+  - **외부 SaaS & 웹훅 자동화 결합 (SaaS & Webhook Bridging)**: 슬랙/노션 동기화, 구글 시트 적재, 외부 웹훅 트리거 등 브라우저/API 연계가 복잡한 영역에만 n8n 2.0의 원클릭 MCP 라이브러리와 네이티브 에이전트 허브를 선별 연계하여 시스템 효율을 극대화.
+  - **비결정적 장기 목표 스케줄링 (Schedule-Driven Objective Run)**: 주기적 모니터링 및 복합 자동화 태스크 발생 시, 정적 스크립트 대신 n8n 2.0의 목표(Objective) 기반 백그라운드 추론 파이프라인을 가동하여 예외 상황을 자율 치유.
+
 
 
 
