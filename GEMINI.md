@@ -253,6 +253,11 @@
   - **실시간 정량 팩트 보강 (Fact Grounding via Open API)**: 상가상권(39개 속성), 아파트 실거래가(국토부 원본), 관광공사 여행(이미지 URL 포함), 기상청 동네예보, 대체공휴일 특일 정보 등 지역/통계 질의 시 LLM 추측(환각)을 배제하고 공공데이터포털 REST API를 1순위로 호출하여 100% 정량 팩트 제공.
   - **$0 풀스택 프록시 아키텍처 (Zero-Cost Proxy Architecture)**: 유료 지도/API 대신 `Leaflet(OpenStreetMap) + 공공데이터 API + 백엔드(FastAPI/Node) 시크릿 키 은닉`을 표준 스택으로 적용하여 브라우저 API 키 노출 방지 및 운영비 $0 실현.
   - **페이징 정합성 자가 치유 (Self-Healing Pagination Loop)**: 1,000건 단위 대량 데이터 인출 시 `TotalCount`와 실제 파싱된 `Count`를 교차 검증하는 루프를 필수로 삽입하여 데이터 누락 에러 원천 차단.
+- **23) Google Stitch 기반 `DESIGN.md` 아티팩트 & 매크로 Grid / 마이크로 Flex 하네스 (Google Stitch `DESIGN.md` & Responsive UI Harness)**:
+  - **`DESIGN.md` 단일 진실 공급원 강제**: 웹/앱 개발 시 임의 스타일링을 배제하고 디자인 토큰(색상·타이포·간격)과 디자인 의도(Intent)를 산문으로 결합한 `DESIGN.md`를 프로젝트 루트에 먼저 확정하여 일관된 럭셔리 UX 유지.
+  - **2-Track 레이아웃 분기 (Macro Grid & Micro Flex)**: 페이지 전체 거시적 골격은 2차원 **CSS Grid**로 배치하고, 개별 컴포넌트 내부는 컨텐츠 크기에 유연하게 반응하는 **Flexbox (Grow/Shrink)**로 조립하여 모바일-데스크톱 반응형 완성도 극대화.
+  - **Stitch MCP & 크리에이티브 디렉터 파이프라인**: UI 생성 시 실제 콘텐츠 그라운딩 및 네거티브 제약(피해야 할 테마/색상)을 먼저 고정하고, Stitch MCP 스펙을 지원하여 터미널 환경에서 프로덕션 HTML/Tailwind 스니펫을 자율 인출.
+
 
 
 
