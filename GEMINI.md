@@ -243,6 +243,13 @@
   - **온톨로지 5대 요소 강제 (Objects, Links, Actions, Functions, Roles)**: 단순 그래프 추출(관계 스파게티)을 배제하고 비즈니스 업무 규칙에 맞춘 [오브젝트 정의, 방향성 엣지 제약, 상태 변경 액션, 집계 펑션, 권한 제어]를 스키마로 사전 고정하여 지식의 무결성 확보.
   - **고유 식별자(PK/ID) 기반 개체 해소 (Entity Resolution)**: 메모리, DB, 지식 관리 시 텍스트 표기 차이(동명인, 유사 키워드)로 인한 노드 증식을 방지하기 위해 고유 식별자(PK, Task ID, URI)를 강제 매핑하여 중복 머지 및 단일 진실 공급원(SSOT) 유지.
   - **디지털 트윈 기반 사전 시뮬레이션 (Simulation Before Mutation)**: 파괴적이거나 복잡한 다단계 배포/DB 마이그레이션 실행 전, 온톨로지 모델 위에서 가상 액션을 사전 실행(Dry-Run)하여 병목과 사이드 이펙트를 예측한 후 실제 실행.
+- **21) 하드웨어 인식형 양방향 무인 동기화 & GPU 가드레일 (Hardware-Aware Bi-Directional Sync & GPU Guard)**:
+  - **양방향 부팅 자동 수신 (Bi-Directional Auto-Pull)**: 데스크톱(`sync_desktop_on_boot.ps1`)과 노트북(`sync_laptop_on_boot.ps1`) 모두 부팅 시 상대 기기에서 작업된 최신 GitHub 커밋(`git pull origin master`), 볼트 지식, 전역 헌법(`GEMINI.md`)을 무소음 백그라운드로 자동 병합.
+  - **하드웨어 격리 및 다운그레이드 방지 (GPU Guardrail)**: 
+    - **메인 데스크톱 (외장 RX 6600 8GB VRAM)**: 7B/8B 로컬 LLM(`qwen2.5-coder:7b`, `deepseek-r1:8b`), GPU 가속 연산, C++ 오디오 엔진 설정을 영구 보존하며, 노트북의 저전력/CPU 전용 프로필로의 덮어쓰기를 원천 차단.
+    - **서브 노트북 (내장 Iris Xe 그래픽)**: Antigravity 클라우드 우선 및 3B 이하 경량 모델만 제한 구동하는 저발열/배터리 절약 모드 유지.
+  - **설정 분리 원칙**: 지식(마크다운), 전역 헌법, 스킬은 100% 동기화하되, 기기별 하드웨어 최적화(VRAM 할당치, GPU 가속 플래그, 로컬 캐시)는 기기별 로컬 레지스트리로 엄격히 격리.
+
 
 
 
