@@ -228,4 +228,11 @@
   - **`.agent/agents/<name>/agent.md` 컨텍스트 격리**: 대량 로그 분석, 리팩토링, 코드 리뷰 등 토큰 소모가 큰 작업은 `subagent: true` 기반 독립 컨텍스트로 격리 위임하여 메인 윈도우 오염 원천 차단.
   - **기획-실행 2단계 분기 (`/grill-me` -> `/teamwork-preview`)**: 거대 아키텍처/멀티 도메인 작업 시 `/grill-me` 역질문 인터뷰로 설계 전제/기술 스택을 사전 고정한 후, `/teamwork-preview`로 다계층(3~4단계) 서브에이전트 팀을 구동. 사소한 UI 수정에는 단일 에이전트 다이어트 원칙 유지.
   - **동적 사이드카(Dynamic Sidecars) & 백그라운드 크론**: 장시간 진행되는 백그라운드 프로세스/빌드는 5분 주기 크론 사이드카로 감시하여 메인 컨텍스트 대기 토큰 낭비 차단.
+- **17) Google Data Agent Kit & 하이브리드 데이터 엔지니어링 (Data Agent Kit & Fan-Out Guard)**:
+  - **하이브리드 Data Cloud 통합 제어**: Antigravity IDE 내부에서 BigQuery, Cloud SQL, AlloyDB, Spanner, GCS를 단일 뷰로 통합 탐색 및 안전한 쿼리 실행.
+  - **1:N 관계형 조인 Fan-Out 방어**: 다대일/일대다 관계 조인 시 단순 JOIN을 배제하고 PK 고유성(Uniqueness)을 검증하는 CTE 기반 집계 모델 작성.
+  - **TimesFM 기반 AI.FORECAST 0-Shot 예측 & dbt 파이프라인 자동화**: 시계열 분석 시 BigQuery 특화 `AI.FORECAST`를 적용하고, 재발 방지를 위한 dbt staging/marts 모델과 자동 테스트를 자율 구축.
+- **18) 데스크톱-노트북 실시간 부팅 동기화 하네스 (Startup Auto-Sync & Daily Delta Check)**:
+  - **노트북 부팅 시 무인 자동 동기화**: Dell Latitude 7440 노트북 부팅/로그온 시 백그라운드 시작 스크립트가 자동 실행되어 GitHub 최신 변경사항(`git pull origin master`), 옵시디언 볼트(`C:\전일도`), 전역 헌법(`GEMINI.md`), 38종 전역 스킬(`config\skills\`)을 1초 만에 데스크톱과 100% 동일 상태로 동기화.
+  - **일일 업데이트 & 상태 체크 알림**: 부팅 시 당일 `05_일일_리포트/YYYY-MM-DD.md` 및 `지금_바뀐점.md` 델타를 자동 점검하여 누락 없는 일관성 유지.
 

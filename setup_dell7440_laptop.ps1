@@ -1,4 +1,4 @@
-﻿# Dell Latitude 7440 (Intel i5-1345U / 32GB RAM / Iris Xe) Antigravity & Obsidian Setup
+# Dell Latitude 7440 (Intel i5-1345U / 32GB RAM / Iris Xe) Antigravity & Obsidian Setup
 param (
     [switch]$SkipOllama
 )
@@ -12,7 +12,7 @@ Write-Host '=================================================================' -
 Write-Host ''
 
 # 1. Clean up unnecessary desktop shortcuts created earlier
-Write-Host '[1/5] Cleaning up temporary desktop shortcuts...' -ForegroundColor Yellow
+Write-Host '[1/6] Cleaning up temporary desktop shortcuts...' -ForegroundColor Yellow
 $desktopPaths = @(
     "$env:USERPROFILE\Desktop",
     "$env:USERPROFILE\OneDrive\Desktop",
@@ -42,16 +42,16 @@ foreach ($dp in $desktopPaths) {
 }
 
 # 2. Sync Obsidian Vault (C:\전일도)
-Write-Host '[2/5] Syncing Obsidian Vault (C:\전일도)...' -ForegroundColor Yellow
+Write-Host '[2/6] Syncing Obsidian Vault (C:\전일도)...' -ForegroundColor Yellow
 $vaultPath = 'C:\전일도'
 if (-not (Test-Path $vaultPath)) {
     git clone https://github.com/incarnation44/obsidian-vault.git $vaultPath
 } else {
-    git -C $vaultPath pull origin master
+    git -C $vaultPath pull origin master --rebase
 }
 
 # 3. Register C:\전일도 in Obsidian App
-Write-Host '[3/5] Registering C:\전일도 in Obsidian App configuration...' -ForegroundColor Yellow
+Write-Host '[3/6] Registering C:\전일도 in Obsidian App configuration...' -ForegroundColor Yellow
 $obsidianConfigDir = Join-Path $env:APPDATA 'obsidian'
 if (-not (Test-Path $obsidianConfigDir)) {
     New-Item -ItemType Directory -Force -Path $obsidianConfigDir | Out-Null
@@ -71,7 +71,7 @@ $vaultConfig | ConvertTo-Json -Depth 5 | Set-Content -Path $obsidianJsonPath -En
 Write-Host '  -> [OK] C:\전일도 registered in Obsidian App!' -ForegroundColor Green
 
 # 4. Sync GEMINI.md Constitution
-Write-Host '[4/5] Syncing GEMINI.md Constitution...' -ForegroundColor Yellow
+Write-Host '[4/6] Syncing GEMINI.md Constitution...' -ForegroundColor Yellow
 $rulesDir = Join-Path $env:USERPROFILE '.gemini\config\rules'
 $skillsDir = Join-Path $env:USERPROFILE '.gemini\config\skills'
 $workspaceDir = Join-Path $env:USERPROFILE '.gemini\antigravity\scratch\my_ai_workspace'
@@ -85,9 +85,31 @@ if (Test-Path (Join-Path $vaultPath 'GEMINI.md')) {
     Write-Host '  -> [OK] GEMINI.md Constitution synced!' -ForegroundColor Green
 }
 
-# 5. Low-power Ollama AI (if needed)
+# 5. Register Automatic Boot/Logon Sync Engine (Always Keep Identical State)
+Write-Host '[5/6] Registering Automatic Startup Auto-Sync Engine...' -ForegroundColor Yellow
+$startupFolder = Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs\Startup'
+$vbsSource = Join-Path $vaultPath 'scripts\run_sync_laptop_silent.vbs'
+$vbsTarget = Join-Path $startupFolder 'SyncLaptopOnBoot.vbs'
+
+if (Test-Path $vbsSource) {
+    Copy-Item -Path $vbsSource -Destination $vbsTarget -Force
+    Write-Host '  -> [OK] Startup folder auto-sync registered!' -ForegroundColor Green
+}
+
+# Also register Task Scheduler for robust logon trigger
+try {
+    $action = New-ScheduledTaskAction -Execute "wscript.exe" -Argument "`"C:\전일도\scripts\run_sync_laptop_silent.vbs`""
+    $trigger = New-ScheduledTaskTrigger -AtLogOn
+    $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Minutes 5)
+    Register-ScheduledTask -TaskName "AutoSyncLaptopOnLogon" -Action $action -Trigger $trigger -Settings $settings -Force -ErrorAction SilentlyContinue | Out-Null
+    Write-Host '  -> [OK] Task Scheduler AutoSyncLaptopOnLogon registered!' -ForegroundColor Green
+} catch {
+    Write-Host '  -> [INFO] Task Scheduler registration skipped (User privilege maintained).' -ForegroundColor Gray
+}
+
+# 6. Low-power Ollama AI (if needed)
 if (-not $SkipOllama) {
-    Write-Host '[5/5] Checking low-power Ollama AI...' -ForegroundColor Yellow
+    Write-Host '[6/6] Checking low-power Ollama AI...' -ForegroundColor Yellow
     $ollamaExe = Join-Path $env:LOCALAPPDATA 'Programs\Ollama\ollama.exe'
     if (Test-Path $ollamaExe) {
         Start-Process -FilePath $ollamaExe -ArgumentList 'serve' -WindowStyle Hidden
@@ -96,6 +118,6 @@ if (-not $SkipOllama) {
 
 Write-Host ''
 Write-Host '=================================================================' -ForegroundColor Green
-Write-Host 'Clean setup complete! All temporary shortcuts removed.' -ForegroundColor Green
-Write-Host 'Obsidian App will now open C:\전일도 automatically.' -ForegroundColor Green
+Write-Host 'Setup & Auto-Sync Engine complete!' -ForegroundColor Green
+Write-Host 'Laptop will now automatically sync with Desktop on every boot.' -ForegroundColor Green
 Write-Host '=================================================================' -ForegroundColor Green
