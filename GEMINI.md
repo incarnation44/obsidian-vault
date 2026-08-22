@@ -235,4 +235,14 @@
 - **18) 데스크톱-노트북 실시간 부팅 동기화 하네스 (Startup Auto-Sync & Daily Delta Check)**:
   - **노트북 부팅 시 무인 자동 동기화**: Dell Latitude 7440 노트북 부팅/로그온 시 백그라운드 시작 스크립트가 자동 실행되어 GitHub 최신 변경사항(`git pull origin master`), 옵시디언 볼트(`C:\전일도`), 전역 헌법(`GEMINI.md`), 38종 전역 스킬(`config\skills\`)을 1초 만에 데스크톱과 100% 동일 상태로 동기화.
   - **일일 업데이트 & 상태 체크 알림**: 부팅 시 당일 `05_일일_리포트/YYYY-MM-DD.md` 및 `지금_바뀐점.md` 델타를 자동 점검하여 누락 없는 일관성 유지.
+- **19) PostgreSQL / Supabase 단일 통합 DB & 하이브리드 RAG 아키텍처 (Single-DB Polyglot & Hybrid RAG)**:
+  - **서드파티 유료 DB 배제 & 단일 DB 완결 (Single-DB Consolidation)**: Pinecone, Milvus, Qdrant 등 외부 유료 벡터 DB 및 별도 검색 엔진(Elasticsearch), 그래프 DB(Neo4j) 구독을 원천 배제하고, PostgreSQL(Supabase) 단일 인스턴스에 `pgvector`, 내장 `Full-Text Search(tsvector)`, `Apache AGE(Cypher)` 확장을 적용하여 인프라 비용 $0화 및 트랜잭션 데이터 일관성 완벽 확보.
+  - **RRF 하이브리드 검색 (Reciprocal Rank Fusion)**: 에이전트 메모리 및 웹 서비스 RAG 구축 시 의미론적 벡터 검색(`pgvector`)과 키워드 정확 일치(`tsvector`)를 결합한 하이브리드 RRF 검색 파이프라인을 기본 지원하여 고유명사/전문용어 인출 누락 방지.
+  - **로컬-클라우드 최적 이원화**: 로컬 에이전트 작업은 초경량 **SQLite (`memory.db`)** + **청크리스 트리 RAG (`chunkless-rag`)**로 가볍고 빠르게 처리하고, 외부 웹/앱 배포 시 **PostgreSQL / Supabase**로 자동 분기.
+- **20) 팔란티어 온톨로지 규칙 모델 & 식별자 기반 개체 해소 하네스 (Palantir Ontology & Entity Resolution Harness)**:
+  - **온톨로지 5대 요소 강제 (Objects, Links, Actions, Functions, Roles)**: 단순 그래프 추출(관계 스파게티)을 배제하고 비즈니스 업무 규칙에 맞춘 [오브젝트 정의, 방향성 엣지 제약, 상태 변경 액션, 집계 펑션, 권한 제어]를 스키마로 사전 고정하여 지식의 무결성 확보.
+  - **고유 식별자(PK/ID) 기반 개체 해소 (Entity Resolution)**: 메모리, DB, 지식 관리 시 텍스트 표기 차이(동명인, 유사 키워드)로 인한 노드 증식을 방지하기 위해 고유 식별자(PK, Task ID, URI)를 강제 매핑하여 중복 머지 및 단일 진실 공급원(SSOT) 유지.
+  - **디지털 트윈 기반 사전 시뮬레이션 (Simulation Before Mutation)**: 파괴적이거나 복잡한 다단계 배포/DB 마이그레이션 실행 전, 온톨로지 모델 위에서 가상 액션을 사전 실행(Dry-Run)하여 병목과 사이드 이펙트를 예측한 후 실제 실행.
+
+
 
