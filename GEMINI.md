@@ -122,6 +122,7 @@
 | agent-memory | `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\core\agent_memory.py` — SQLite: `...\my_ai_workspace\.agents\memory\memory.db` |
 | diagram-design | `C:\Users\ildoc\.gemini\config\skills\diagram-design\scripts\diagram_engine.py` |
 | obsidian-skills | `C:\Users\ildoc\.gemini\config\skills\obsidian-skills\scripts\vault_ops.py` |
+| pdf-inspector | `C:\Users\ildoc\.gemini\config\skills\pdf-inspector\scripts\inspect_pdf.py` |
 
 전역 스킬 디렉터리: `C:\Users\ildoc\.gemini\config\skills\`  
 워크스페이스 운영 체크리스트: `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\ANTIGRAVITY_STANDALONE.md`
@@ -257,6 +258,11 @@
   - **`DESIGN.md` 단일 진실 공급원 강제**: 웹/앱 개발 시 임의 스타일링을 배제하고 디자인 토큰(색상·타이포·간격)과 디자인 의도(Intent)를 산문으로 결합한 `DESIGN.md`를 프로젝트 루트에 먼저 확정하여 일관된 럭셔리 UX 유지.
   - **2-Track 레이아웃 분기 (Macro Grid & Micro Flex)**: 페이지 전체 거시적 골격은 2차원 **CSS Grid**로 배치하고, 개별 컴포넌트 내부는 컨텐츠 크기에 유연하게 반응하는 **Flexbox (Grow/Shrink)**로 조립하여 모바일-데스크톱 반응형 완성도 극대화.
   - **Stitch MCP & 크리에이티브 디렉터 파이프라인**: UI 생성 시 실제 콘텐츠 그라운딩 및 네거티브 제약(피해야 할 테마/색상)을 먼저 고정하고, Stitch MCP 스펙을 지원하여 터미널 환경에서 프로덕션 HTML/Tailwind 스니펫을 자율 인출.
+- **24) PDF Inspector 초고속 50ms 전처리 & 선택적 OCR 하네스 (PDF Inspector & Selective OCR Preprocessor)**:
+  - **50ms 초고속 스캔/디지털 텍스트 분기**: PDF 문서 처리 시 무조건적인 Vision OCR 호출을 원천 차단하고, `pdf-inspector`로 텍스트 레이어 존재 여부를 50ms 안에 판별.
+  - **토큰 및 API 비용 90% 절감**: 디지털 텍스트 페이지는 무료 초고속 직접 추출(`Direct Extract`), 텍스트가 없는 스캔 페이지만 골라 OCR로 라우팅.
+  - **`chunkless-rag` 헤딩 트리 연계**: 추출된 텍스트는 청크리스 트리 RAG로 즉시 주입되어 문서 목차와 표를 원형 그대로 보존.
+
 
 
 
