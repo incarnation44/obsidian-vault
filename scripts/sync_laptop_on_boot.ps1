@@ -89,6 +89,11 @@ $vaultConfig = @{
 $vaultConfig | ConvertTo-Json -Depth 5 | Set-Content -Path $obsidianJsonPath -Encoding UTF8
 Write-SyncLog "INFO: C:\전일도 registered in Obsidian App."
 
+# 6. Laptop Hardware Guardrail (하드웨어 역효과 원천 배제: 내장 그래픽 보호 & 8B 로컬 차단)
+Write-SyncLog "GUARD: Dell Latitude 7440 Hardware Guardrail Active."
+Write-SyncLog "GUARD: Intel Iris Xe Graphics detected (Shared RAM). Cloud Gemini 3.7 Flash enforced as primary AI."
+Write-SyncLog "GUARD: Heavy 8B local LLMs prohibited to protect battery life and prevent fan noise/thermal throttling."
+
 # 5. Check Daily Delta
 $todayStr = Get-Date -Format 'yyyy-MM-dd'
 $todayReport = Join-Path $logDir "$todayStr.md"

@@ -61,7 +61,11 @@
 - **노트북 로컬설정 지침 (사용자가 "노트북에서 로컬설정" 질문 시)**:
   - 1순위 (기본): **Antigravity 클라우드 (Gemini 3.7 Flash)** 우선 활용 (배터리/발열 0, 초고속).
   - 2순위 (오프라인 필수 시): `Qwen2.5-Coder-3B (Q8_0)` 등 **3B 이하 초경량 모델**만 제한적 구동 (15~20 tok/s).
-  - 8B 이상(`deepseek-r1:8b`, `qwen2.5:7b`)은 외장 VRAM 부재로 속도가 7.5 tok/s 이하로 급감하고 배터리 급방전/팬 소음이 발생하므로 **노트북 로컬 구동 비추천**.
+  - 8B 이상(`deepseek-r1:8b`, `qwen2.5:7b`)은 외장 VRAM 부재로 속도가 7.5 tok/s 이하로 급감하고 배터리 급방전/팬 소음이 발생하므로 **노트북 로컬 구동 절대 금지 및 배제**.
+- **하드웨어 역효과 원천 배제 동기화 원칙 (Hardware-Aware Negative Impact Exclusion)**:
+  - 지식, 헌법, 44개 스킬, 워크플로우는 100% 동일 동기화하되, **사양 차이로 역효과가 나는 설정은 절대 강제 복제하지 않는다.**
+  - 데스크톱: AMD RX 6600 (8GB VRAM) 외장 GPU 가속 및 8B 로컬 모델 최고 성능 유지.
+  - 노트북: Intel Iris Xe 내장 그래픽 환경 보호 (Gemini Flash 클라우드 1순위, 배터리 방전·발열·소음 유발하는 무거운 8B 로컬 모델 강제 구동 절대 배제).
 - Gemini/Antigravity 클라우드 추론과 무관하다. Ollama 실패를 Gemini 실패로 보고하지 마라.
 
 ---
@@ -70,7 +74,7 @@
 
 - **기본 워크스페이스**: `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace`
 - **헌법 (이 파일)**: `C:\Users\ildoc\.gemini\config\rules\GEMINI.md`
-- **전역 스킬 (38개)**: `C:\Users\ildoc\.gemini\config\skills\`
+- **전역 스킬 (44개)**: `C:\Users\ildoc\.gemini\config\skills\`
 - **MCP**: `C:\Users\ildoc\.gemini\config\mcp_config.json` (playwright + Cloud SQL. Grok MCP를 추가하지 마라)
 - **옵시디언 메인 보관소**: `C:\전일도`
 - **게임 비공개 격리 보관소**: `C:\전일도\09_게임_보관소_비공개` (깃허브 업로드 절대 금지)
