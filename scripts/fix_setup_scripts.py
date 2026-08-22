@@ -1,4 +1,8 @@
-﻿# Dell Latitude 7440 (Intel i5-1345U / 32GB RAM / Iris Xe) Antigravity Remote Hub Setup
+import os
+from pathlib import Path
+
+# setup_dell7440_laptop.ps1 content (UTF-8 with BOM)
+ps1_content = r"""# Dell Latitude 7440 (Intel i5-1345U / 32GB RAM / Iris Xe) Antigravity Remote Hub Setup
 param (
     [switch]$SkipOllama
 )
@@ -128,3 +132,28 @@ Write-Host '=================================================================' -
 Write-Host '1. Click [Antigravity Remote Hub] on your Desktop.' -ForegroundColor Cyan
 Write-Host '2. Select [Ildo-Desktop] to control Desktop with 0% laptop battery drain.' -ForegroundColor Cyan
 Write-Host '=================================================================' -ForegroundColor Green
+"""
+
+# Save .ps1 with UTF-8 BOM
+with open(r'C:\전일도\setup_dell7440_laptop.ps1', 'w', encoding='utf-8-sig') as f:
+    f.write(ps1_content)
+
+# Save .bat with pure ASCII / UTF-8 without BOM
+bat_content = """@echo off
+chcp 65001 > nul
+title Dell Latitude 7440 Antigravity Remote Setup
+echo =================================================================
+echo  Dell Latitude 7440 Antigravity 2.0 Remote Hub Setup
+echo =================================================================
+echo.
+
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0setup_dell7440_laptop.ps1"
+
+echo.
+pause
+"""
+
+with open(r'C:\전일도\setup_dell7440_laptop.bat', 'w', encoding='utf-8') as f:
+    f.write(bat_content)
+
+print("Updated setup scripts successfully!")

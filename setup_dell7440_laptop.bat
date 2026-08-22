@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 chcp 65001 > nul
 title Dell Latitude 7440 Antigravity Remote Setup
 echo =================================================================
