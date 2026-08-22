@@ -249,6 +249,11 @@
     - **메인 데스크톱 (외장 RX 6600 8GB VRAM)**: 7B/8B 로컬 LLM(`qwen2.5-coder:7b`, `deepseek-r1:8b`), GPU 가속 연산, C++ 오디오 엔진 설정을 영구 보존하며, 노트북의 저전력/CPU 전용 프로필로의 덮어쓰기를 원천 차단.
     - **서브 노트북 (내장 Iris Xe 그래픽)**: Antigravity 클라우드 우선 및 3B 이하 경량 모델만 제한 구동하는 저발열/배터리 절약 모드 유지.
   - **설정 분리 원칙**: 지식(마크다운), 전역 헌법, 스킬은 100% 동기화하되, 기기별 하드웨어 최적화(VRAM 할당치, GPU 가속 플래그, 로컬 캐시)는 기기별 로컬 레지스트리로 엄격히 격리.
+- **22) 공공데이터 포털 Open API & $0 풀스택 프록시 웹앱 하네스 (Public Data Open API & $0 Full-Stack Harness)**:
+  - **실시간 정량 팩트 보강 (Fact Grounding via Open API)**: 상가상권(39개 속성), 아파트 실거래가(국토부 원본), 관광공사 여행(이미지 URL 포함), 기상청 동네예보, 대체공휴일 특일 정보 등 지역/통계 질의 시 LLM 추측(환각)을 배제하고 공공데이터포털 REST API를 1순위로 호출하여 100% 정량 팩트 제공.
+  - **$0 풀스택 프록시 아키텍처 (Zero-Cost Proxy Architecture)**: 유료 지도/API 대신 `Leaflet(OpenStreetMap) + 공공데이터 API + 백엔드(FastAPI/Node) 시크릿 키 은닉`을 표준 스택으로 적용하여 브라우저 API 키 노출 방지 및 운영비 $0 실현.
+  - **페이징 정합성 자가 치유 (Self-Healing Pagination Loop)**: 1,000건 단위 대량 데이터 인출 시 `TotalCount`와 실제 파싱된 `Count`를 교차 검증하는 루프를 필수로 삽입하여 데이터 누락 에러 원천 차단.
+
 
 
 
