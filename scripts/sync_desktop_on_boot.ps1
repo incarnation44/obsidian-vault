@@ -1,4 +1,4 @@
-﻿# Main Desktop (Ildo 본체) Boot/Logon Auto-Sync Engine
+# Main Desktop (Ildo 본체) Boot/Logon Auto-Sync Engine
 # Automatically pulls latest laptop changes from GitHub, syncs GEMINI.md Constitution,
 # and enforces Hardware/GPU Protection Guardrails (Prevents GPU/Model Downgrades).
 
@@ -60,7 +60,16 @@ if (Test-Path $sourceConstitution) {
     Write-SyncLog "INFO: GEMINI.md Constitution synced to ~/.gemini/config/rules/GEMINI.md"
 }
 
-# 4. Hardware & GPU Protection Guardrail (하드웨어별 설정 분리 및 다운그레이드 방지)
+# 4. Sync Global Skills
+$skillsSrc = Join-Path $vaultPath 'skills_sync'
+$skillsDst = Join-Path $env:USERPROFILE '.gemini\config\skills'
+if (Test-Path $skillsSrc) {
+    if (-not (Test-Path $skillsDst)) { New-Item -ItemType Directory -Force -Path $skillsDst | Out-Null }
+    robocopy $skillsSrc $skillsDst /E /R:1 /W:1 /NP /NFL /NDL | Out-Null
+    Write-SyncLog "INFO: Global Skills (44 skills) synced from skills_sync."
+}
+
+# 5. Hardware & GPU Protection Guardrail (하드웨어별 설정 분리 및 다운그레이드 방지)
 Write-SyncLog "INFO: Verifying Main Desktop Hardware & GPU Guardrails..."
 try {
     # Verify Desktop Hardware Profile

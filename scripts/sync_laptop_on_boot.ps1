@@ -64,7 +64,16 @@ if (Test-Path $sourceConstitution) {
     Write-SyncLog "INFO: GEMINI.md Constitution successfully synced to ~/.gemini/config/rules/GEMINI.md"
 }
 
-# 4. Sync Obsidian App configuration
+# 4. Sync Global Skills
+$skillsSrc = Join-Path $vaultPath 'skills_sync'
+$skillsDst = Join-Path $env:USERPROFILE '.gemini\config\skills'
+if (Test-Path $skillsSrc) {
+    if (-not (Test-Path $skillsDst)) { New-Item -ItemType Directory -Force -Path $skillsDst | Out-Null }
+    robocopy $skillsSrc $skillsDst /E /R:1 /W:1 /NP /NFL /NDL | Out-Null
+    Write-SyncLog "INFO: Global Skills (44 skills) successfully synced to ~/.gemini/config/skills"
+}
+
+# 5. Sync Obsidian App configuration
 $obsidianConfigDir = Join-Path $env:APPDATA 'obsidian'
 if (-not (Test-Path $obsidianConfigDir)) { New-Item -ItemType Directory -Force -Path $obsidianConfigDir | Out-Null }
 $obsidianJsonPath = Join-Path $obsidianConfigDir 'obsidian.json'
