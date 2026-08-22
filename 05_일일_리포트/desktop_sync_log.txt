@@ -1,0 +1,11 @@
+﻿[2026-08-22 14:22:57] === Main Desktop Auto-Sync Initiated on Boot/Logon ===
+[2026-08-22 14:22:57] INFO: Internet connection verified.
+[2026-08-22 14:22:57] INFO: Pulling latest laptop updates from GitHub repository...
+[2026-08-22 14:22:59] INFO: Git Pull Result: From https://github.com/incarnation44/obsidian-vault  * branch            master     -> FETCH_HEAD Already up to date.
+[2026-08-22 14:22:59] INFO: GEMINI.md Constitution synced to ~/.gemini/config/rules/GEMINI.md
+[2026-08-22 14:22:59] INFO: Verifying Main Desktop Hardware & GPU Guardrails...
+[2026-08-22 14:22:59] GUARD: AMD Radeon RX 6600 (8GB VRAM) detected. Desktop GPU acceleration profile PRESERVED.
+[2026-08-22 14:22:59] GUARD: High-performance 8B/7B local AI models (qwen2.5-coder:7b, deepseek-r1:8b) remain default for local tasks.
+[2026-08-22 14:22:59] INFO: C:\전일도 registered in Obsidian App.
+[2026-08-22 14:22:59] INFO: Today daily report (2026-08-22.md) verified.
+[2026-08-22 14:22:59] === Main Desktop Auto-Sync Completed Successfully ===
