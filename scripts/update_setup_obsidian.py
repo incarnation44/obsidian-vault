@@ -1,4 +1,8 @@
-﻿# Dell Latitude 7440 (Intel i5-1345U / 32GB RAM / Iris Xe) Antigravity & Obsidian Setup
+import os
+import json
+from pathlib import Path
+
+ps1_content = r"""# Dell Latitude 7440 (Intel i5-1345U / 32GB RAM / Iris Xe) Antigravity & Obsidian Setup
 param (
     [switch]$SkipOllama
 )
@@ -139,3 +143,27 @@ Write-Host '=================================================================' -
 Write-Host '1. 바탕화면의 [📝 옵시디언 전일도 보관소]를 누르면 C:\전일도 가 자동으로 열립니다.' -ForegroundColor Cyan
 Write-Host '2. 바탕화면의 [Antigravity] 네이티브 앱을 실행하시면 원격 연결됩니다.' -ForegroundColor Cyan
 Write-Host '=================================================================' -ForegroundColor Green
+"""
+
+# Save .ps1 with UTF-8 BOM
+with open(r'C:\전일도\setup_dell7440_laptop.ps1', 'w', encoding='utf-8-sig') as f:
+    f.write(ps1_content)
+
+bat_content = """@echo off
+chcp 65001 > nul
+title Dell Latitude 7440 Antigravity & Obsidian Setup
+echo =================================================================
+echo  Dell Latitude 7440 Antigravity 2.0 & Obsidian Vault Setup
+echo =================================================================
+echo.
+
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0setup_dell7440_laptop.ps1"
+
+echo.
+pause
+"""
+
+with open(r'C:\전일도\setup_dell7440_laptop.bat', 'w', encoding='utf-8') as f:
+    f.write(bat_content)
+
+print("Updated setup scripts for Obsidian & Native Antigravity successfully!")

@@ -1,8 +1,8 @@
 @echo off
 chcp 65001 > nul
-title Dell Latitude 7440 Antigravity Remote Setup
+title Dell Latitude 7440 Antigravity & Obsidian Setup
 echo =================================================================
-echo  Dell Latitude 7440 Antigravity 2.0 Remote Hub Setup
+echo  Dell Latitude 7440 Antigravity 2.0 & Obsidian Vault Setup
 echo =================================================================
 echo.
 
