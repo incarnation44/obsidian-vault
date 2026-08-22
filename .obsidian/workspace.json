@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "539eb5fa99243b07",
+        "id": "2a5e82b8fb06465d",
         "type": "tabs",
         "children": [
           {
-            "id": "a66a74b6e2462825",
+            "id": "c04910ba7d5044fb",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -183,7 +183,7 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "a66a74b6e2462825",
+  "active": "c04910ba7d5044fb",
   "lastOpenFiles": [
     "01_AI_시스템_및_도구/마지막확인.md",
     "01_AI_시스템_및_도구/2026-08-22_노트북_스마트폰_기기간_실시간_동기화_테스트.md",
