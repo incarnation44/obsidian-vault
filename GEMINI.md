@@ -263,6 +263,10 @@
   - **50ms 초고속 스캔/디지털 텍스트 분기**: PDF 문서 처리 시 무조건적인 Vision OCR 호출을 원천 차단하고, `pdf-inspector`로 텍스트 레이어 존재 여부를 50ms 안에 판별.
   - **토큰 및 API 비용 90% 절감**: 디지털 텍스트 페이지는 무료 초고속 직접 추출(`Direct Extract`), 텍스트가 없는 스캔 페이지만 골라 OCR로 라우팅.
   - **`chunkless-rag` 헤딩 트리 연계**: 추출된 텍스트는 청크리스 트리 RAG로 즉시 주입되어 문서 목차와 표를 원형 그대로 보존.
+- **25) 멀티 모델/에이전트 보안 격리 및 최소 권한 샌드박스 (Multi-Model Cross-Replay Defense & Least-Privilege Sandbox)**:
+  - **가장 취약한 형제의 원칙 방어 (Weakest Sibling Guard)**: 상위 추론 모델(Pro)의 원시 생각 과정(Raw CoT), 마스터 시스템 프롬프트, 관리자 API 키를 가드레일이 약한 하위 경량 서브에이전트(`flash`, `flash_lite`)에 무차별 노출·공유하지 않고 엄격한 최소 권한 샌드박스로 핀셋 전달.
+  - **크로스 리플레이 누출 차단 (Sanitized State Passing)**: 다단계 에이전트 간 세션 상태 전달 시 불필요한 내부 메타데이터와 시스템 컨텍스트를 사전에 필터링(Sanitizing)하여 하위 모델 탈옥을 통한 상위 추론/키 탈취를 원천 차단.
+
 
 
 
