@@ -221,3 +221,11 @@
   - **Workspace 2-Track 하네스**: 구글 워크스페이스(Drive, Docs, Sheets, Gmail) 연동 및 업무 자동화 시 비개발자용 Agent Studio 플로우 설계와 개발자용 ADK(Agent Development Kit) 파이썬 모듈러 아키텍처를 결합해 제공.
   - **MCP 기반 안전 데이터 계통**: 표준화된 Workspace MCP 인터페이스를 통해 불필요한 컨텍스트 유실 없이 문서/시트 팩트만 핀셋 추출.
   - **Model Armor 엔터프라이즈 보안**: 최소 권한 및 3대 불가침 원칙(이메일/결제/삭제 금지)과 연동된 입출력 검증 루프로 데이터 무결성 보장.
+- **15) Antigravity Remote Control & Multi-Device Harness (원격 제어 & 모바일 PWA 하네스)**:
+  - **단일 패널 멀티 머신 제어 (Single Pane Control)**: 메인 본체(Ildo 데스크톱)에 무거운 로컬 빌드 환경, 시크릿 키, 로컬 컨텍스트를 유지하고, 서브 노트북(Dell Latitude 7440) 및 모바일(PWA)에서 브라우저/앱으로 원격 제어 및 푸시 알림 기반 Diff 승인.
+  - **세션 상태 및 절전 방지**: 장시간 실행 작업 시 `Prevent laptop/workstation from sleeping` 및 메뉴바 상주로 세션 연속성 보장.
+- **16) 커스텀 에이전트 독립 컨텍스트 & 기획-실행 2단계 하네스 (.agent/agents & /grill-me & /teamwork-preview)**:
+  - **`.agent/agents/<name>/agent.md` 컨텍스트 격리**: 대량 로그 분석, 리팩토링, 코드 리뷰 등 토큰 소모가 큰 작업은 `subagent: true` 기반 독립 컨텍스트로 격리 위임하여 메인 윈도우 오염 원천 차단.
+  - **기획-실행 2단계 분기 (`/grill-me` -> `/teamwork-preview`)**: 거대 아키텍처/멀티 도메인 작업 시 `/grill-me` 역질문 인터뷰로 설계 전제/기술 스택을 사전 고정한 후, `/teamwork-preview`로 다계층(3~4단계) 서브에이전트 팀을 구동. 사소한 UI 수정에는 단일 에이전트 다이어트 원칙 유지.
+  - **동적 사이드카(Dynamic Sidecars) & 백그라운드 크론**: 장시간 진행되는 백그라운드 프로세스/빌드는 5분 주기 크론 사이드카로 감시하여 메인 컨텍스트 대기 토큰 낭비 차단.
+
