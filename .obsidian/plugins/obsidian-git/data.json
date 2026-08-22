@@ -1,0 +1,8 @@
+{
+  "autoSaveInterval": 1,
+  "autoPullInterval": 1,
+  "autoPullOnBoot": true,
+  "disablePush": false,
+  "pullBeforePush": true,
+  "disableCommandLine": false
+}
