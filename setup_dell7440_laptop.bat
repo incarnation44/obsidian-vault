@@ -1,8 +1,8 @@
-@echo off
+﻿@echo off
 chcp 65001 > nul
 title Dell Latitude 7440 Antigravity Remote Setup
 echo =================================================================
-echo  Dell Latitude 7440 Antigravity 2.0 원격 허브 1분 세팅 시작
+echo  Dell Latitude 7440 Antigravity 2.0 Remote Hub Setup
 echo =================================================================
 echo.
 
