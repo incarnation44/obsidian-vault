@@ -1,4 +1,6 @@
-﻿# Dell Latitude 7440 (Intel i5-1345U / 32GB RAM / Iris Xe) Antigravity & Obsidian Setup
+import os
+
+ps1_content = r"""# Dell Latitude 7440 (Intel i5-1345U / 32GB RAM / Iris Xe) Antigravity & Obsidian Setup
 param (
     [switch]$SkipOllama
 )
@@ -99,3 +101,9 @@ Write-Host '=================================================================' -
 Write-Host 'Clean setup complete! All temporary shortcuts removed.' -ForegroundColor Green
 Write-Host 'Obsidian App will now open C:\전일도 automatically.' -ForegroundColor Green
 Write-Host '=================================================================' -ForegroundColor Green
+"""
+
+with open(r'C:\전일도\setup_dell7440_laptop.ps1', 'w', encoding='utf-8-sig') as f:
+    f.write(ps1_content)
+
+print("Updated setup_dell7440_laptop.ps1 cleanly!")
