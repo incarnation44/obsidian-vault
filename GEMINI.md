@@ -89,6 +89,12 @@
 - **미디어/아카이브 (D:)**: `D:\사진`, `D:\사진\배경화면`, `D:\개인자료`
 - **에이전트 메모리**: `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\.agents\memory\memory.db`
 - **워크스페이스 `.agents\skills`**: 비어 있어도 정상. 전역 스킬은 `.gemini\config\skills` 에 있다.
+- **로컬 사용자 기본 경로 (원드라이브 OneDrive 영구 배제 및 접근 금지)**:
+  - 바탕화면: `C:\Users\ildoc\Desktop` (사용자가 "바탕화면에 만들어줘/저장해줘" 요청 시 **반드시 100% 이 경로만 사용**)
+  - 문서: `C:\Users\ildoc\Documents`
+  - 다운로드: `C:\Users\ildoc\Downloads`
+  - 사진: `C:\Users\ildoc\Pictures`
+  - **원드라이브 경로(`C:\Users\ildoc\OneDrive\...`)는 영구 폐기·삭제됨. 어떠한 경우에도 원드라이브 경로를 탐색하거나 파일/바로가기를 저장하지 마라.**
 
 `C:\전일도\.agents` 는 별도 스킬팩이다. 삭제하지 마라. 다만 Antigravity 작업 규칙에서는 **이 파일(GEMINI.md)이 볼트 `.agents\AGENTS.md` 보다 우선**한다.
 
@@ -154,6 +160,7 @@
 ## ⛔ 8. 하지 말 것
 
 - **임의로 이메일/메시지 보내기, 임의로 결제/과금하기, 임의로 파일/데이터 지우기 (최우선 절대 금지 헌법)**
+- **원드라이브(OneDrive) 경로(`C:\Users\ildoc\OneDrive\...`) 참조 및 파일 생성/저장 시도 (바탕화면, 문서, 사진 등 모든 작업은 100% 순수 로컬 기본 경로 `C:\Users\ildoc\Desktop` 등만 사용)**
 - **게임 관련 선제 발언 (컴퓨터 부품/사양/개발 대화 포함 선제 언급 일체 금지)**
 - **게임 관련 자료 GitHub 업로드 (절대 금지)**
 - Grok Bot에 작업을 위임하거나, Grok이 오기를 기다리거나, 사용자에게 Grok을 쓰라고 말하기
