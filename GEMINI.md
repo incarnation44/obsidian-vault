@@ -322,3 +322,5 @@
 
 
 
+- **32) 시공간 팩트체크 교차 검증 하네스 (Temporal Fact-Check Cross-Validation Harness)**:
+  - **최신 상태(현직자/시사) 독립 검색 필수**: 정치인, 정부 부처, 현재 날짜 기반 이슈 요약 시 단일 검색 도구가 반환하는 텍스트(Summary)를 맹신하지 않고, 현재 시스템 시간(ADDITIONAL_METADATA) 기준 최신 상태(예: 현직 대통령 등)를 한 번 더 단독 검색하여 환각(Hallucination)을 원천 필터링한다.
