@@ -50,3 +50,6 @@ scratch/
 
 # API Keys Ledger
 01_기술_및_개발_지식/통합_API_키_및_무료토큰_관리장부.md
+
+_archive*/
+*.zip
