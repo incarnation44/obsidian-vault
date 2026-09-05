@@ -32,18 +32,32 @@
 
 ---
 
-## 🖥️ 1. 사용자 시스템 & 하드웨어 사양 (추측 금지, 진실 목록)
+## 🖥️ 1. 사용자 시스템 & 3-PC 역할 프로파일 (추측 금지, 로컬 식별 원칙)
 
-- **메인 데스크톱 (Ildo 본체)**: Ryzen 5 5600X (6C/12T) | 라데온 RX 6600 8GB (GPU 가속 활성) | 32GB RAM (DDR4 3200) | Crucial P3 Plus 1TB NVMe(C:) | InnoDisk 240GB NVMe(D:) | ADATA 128GB SATA(E:) | Win 11 Pro
-- **서브 노트북 (Dell Latitude 7440 / Hostname: Ildo-Laptop)**: Core i5-1345U (10C/12T) | Intel Iris Xe 내장 그래픽 (시스템 RAM 공유) | 32GB RAM (LPDDR5 4800) | 이동식 업무·원격 코딩·경량 AI (WSL2 Ubuntu 24.04 보존, LDPlayer 1600x900 최적화)
-- **학원 컴퓨터 (비솔 Vision AI / KH_AI 강의실 PC)**: 윈도우 Conda `pytest` (Python 3.11.16) | OpenCV(5.0.0), PyTorch(2.14.0 CPU) | 컴퓨터 비전 실습 전용 PC (개인 로컬 환경 침범/변조 금지)
+- **머신 자동 식별 우선순위 (로컬 전용, Git 추적 금지)**:
+  1. 시스템 환경변수 `MACHINE_ID` (`laptop` / `desktop` / `academy`)
+  2. 글로벌 설정 `~/.gemini/machine.json`
+  3. Hostname 매칭 (`ILDO-LAPTOP` -> `laptop`, 본체 -> `desktop`, KH강의실 -> `academy`)
+  4. 폴백: `detect_machine.ps1`
+- **PC A — 서브 노트북 (`laptop` / Dell Latitude 7440)**:
+  - **역할**: 평일 주 작업 PC (과제, 프로젝트, 코딩, 문서, Git, Antigravity, 옵시디언 개인 지식).
+  - **허용**: Antigravity, Git/GitHub, `KH_AI`, `C:\전일도`(Obsidian Vault), 개인 RAG/Knowledge, Gemini, MCP/Skills. Ollama는 배터리 보호를 위해 기본 OFF(필요시 초경량 3B 이하만).
+- **PC B — 메인 본체 (`desktop` / Ildo 본체)**:
+  - **역할**: 주말 메인 작업 + 고성능 로컬 AI/연산 PC.
+  - **허용**: Antigravity, Git/GitHub, `KH_AI`, `C:\전일도`(Obsidian Vault), 개인 RAG/Knowledge, Gemini, RX 6600 기반 Ollama(7B/8B 적극 활용), MCP/Skills, Browser Automation.
+- **PC C — 학원 컴퓨터 (`academy` / 비솔 Vision AI 실습 PC)**:
+  - **역할**: 외부/임시 프로젝트 작업 전용 PC (수업 실습, 과제 연속성).
+  - **허용**: Antigravity, Git/GitHub, `KH_AI` 프로젝트, VS Code, Conda `pytest` 환경, 프로젝트 Rules/Skills, Gemini.
+  - **⛔ 절대 금지/격리 (개인 환경 차단)**: `C:\전일도`(Obsidian Vault), 개인 Second Brain, 개인 RAG, `memory.db`, 개인 문서, 개인 API Key, 개인 계정 인증정보, 쿠키/세션 일체 접근/생성 금지.
 
 ---
 
-## ⚡ 2. 로컬 AI (Ollama) & 기기별 로컬설정 지침
+## ⚡ 2. 로컬 AI (Ollama) & 프로젝트 연속성 원칙
 
-- **데스크톱 Ollama 최적화 모델 (8GB VRAM 활용)**: `qwen2.5-coder:7b` (코딩/스크립트 메인), `qwen2.5:7b` (한국어/일반), `deepseek-r1:8b` (심층 논리 추론).
-- **노트북 로컬설정 지침**: 1순위 Antigravity 클라우드(Gemini Flash), 2순위 오프라인 시 `Qwen2.5-Coder-3B` 이하 초경량만 구동. 8B 이상 구동 절대 금지 (배터리 급방전·발열·소음 방지).
+- **Ollama 독립성 원칙**: 프로젝트(`KH_AI` 등)는 Ollama 설치 유무에 절대 종속되지 않는다. 본체는 로컬 가속으로 Ollama를 적극 활용하되, 노트북/학원 PC에서는 Gemini 등 클라우드 모델로 유연하게 폴백한다.
+- **프로젝트 연속성 기준점 (`PROJECT_STATUS.md`)**:
+  - `KH_AI/PROJECT_STATUS.md`를 3-PC 간 공유 작업 상태판으로 사용한다.
+  - 노트북(평일 작업 후 commit/push) ➔ 본체(주말 pull 후 작업 이어감) ➔ 학원 PC(실습 pull 후 push)의 무결점 연속성을 보장한다.
 - **하드웨어 역효과 원천 배제 동기화 (Hardware-Aware Exclusion)**: 지식·헌법·스킬은 100% 동일 동기화하되, 기기 사양 차이로 역효과가 나는 설정(외장 GPU 가속 vs 내장 저전력 vs 학원 실습 환경)은 절대 강제 복제하지 않는다.
 
 ---
@@ -111,7 +125,7 @@
 
 ## 🛡️ 9. 안전 9대 원칙 & 🧠 10. 32대 상황별 자동 발동 프로토콜 (하네스 루프)
 
-1. **복잡한 개발 (카파시 바이브 코딩)**: 가정·트레이드오프 선공개, 군더더기(Over-engineering) 배제, 외과수술적 최소 수정(Surgical Edit - `replace_file_content` 최우선), 터미널 자가치유 검증 하네스(초록불 통과 후 보고), 보안 8대 원칙 기본 탑재.
+1. **복잡한 개발 (카파시 바이브 코딩 & Verification Loop)**: 가정·트레이드오프 선공개, 군더더기(Over-engineering) 배제, 외과수술적 최소 수정(Surgical Edit - `replace_file_content` 최우선). 모든 핵심 작업에 `READ -> ANALYZE -> PLAN -> EXECUTE -> VERIFY -> REPORT` 6단계 검증 루프 적용(초록불 통과 후 최종 보고). 보안 8대 원칙 기본 탑재.
 2. **장기 작업 / 대용량 문서 (W-S-C-I)**: Write(`scratch/`, `memory.db` 외부 기록), Select(`chunkless-rag` 핵심 팩트 추출), Compress(대화 3줄 요약 압축), Isolate(`research` 서브에이전트 격리 조사).
 3. **오디오 / 음성 처리**: 유료 API 대신 `audio.cpp` 로컬 C++ 엔진 및 8GB VRAM 최적화 설정 우선 활용.
 4. **커리어 / 역량 정리**: 옵시디언 축적 지식/개발 이력 기반 '전이 가능한 역량(Transferable Skills)' 도출 및 1인 사업 프로필/포트폴리오 구조화.
@@ -131,7 +145,10 @@
 18. **데스크톱-노트북 실시간 부팅 동기화**: 노트북 부팅/로그온 시 백그라운드 시작 스크립트 자동 실행(Git 최신화, 볼트, 헌법, 스킬 100% 동기화), 당일 일일 리포트(`05_일일_리포트/YYYY-MM-DD.md`) 델타 점검.
 19. **PostgreSQL / Supabase 단일 통합 DB & 하이브리드 RAG**: 유료 서드파티 DB 배제, PostgreSQL(Supabase)에 `pgvector`+`tsvector`+`Apache AGE` 적용, 의미+키워드 RRF 하이브리드 검색, 로컬(SQLite `memory.db` + `chunkless-rag`) vs 배포(PostgreSQL) 이원화.
 20. **온톨로지 규칙 모델 & 개체 해소**: 온톨로지 5대 요소(Objects, Links, Actions, Functions, Roles) 스키마 사전 고정, 고유 식별자(PK/ID) 기반 개체 해소로 단일 진실 공급원(SSOT) 유지, 배포/마이그레이션 전 디지털 트윈 가상 실행(Dry-Run).
-21. **하드웨어 인식형 3대 기기 무인 동기화 & 격리 보존**: 부팅 시 상대 기기 최신 변경사항(`git pull origin master`) 무소음 자동 병합. 데스크톱(RX 6600 8GB VRAM, 7B/8B 로컬 LLM) vs 노트북(Iris Xe 내장, Gemini Flash 우선, WSL2/LDPlayer 보존) vs 학원PC(비솔 Vision AI 실습 전용) 설정 간 상호 덮어쓰기·삭제 원천 금지.
+21. **하드웨어 인식형 3-PC 무인 동기화 & 격리 보존**:
+    - **동기화 이원화**: 개인 지식(Obsidian `master`)은 노트북↔본체 2대만 동기화. 수업/프로젝트(`KH_AI` `main`)는 3대 PC(노트북↔본체↔학원PC) 모두 GitHub 기반 동기화.
+    - **학원 PC(`academy`) 격리 가드**: 학원 PC에서는 `C:\전일도` 및 개인 지식/RAG/DB/인증정보 접근을 원천 차단하며 오직 `KH_AI` 프로젝트 및 실습 코드만 수행.
+    - **설정 보존**: 데스크톱(RX 6600 8GB VRAM, Ollama 메인) vs 노트북(Iris Xe 내장, Gemini Flash 우선, WSL2 보존) vs 학원PC(비솔 Vision AI 실습 전용) 설정 간 상호 덮어쓰기·삭제 원천 금지.
 22. **공공데이터 Open API & $0 풀스택 프록시**: 지역/통계 질의 시 공공데이터 REST API 1순위 호출 정량 팩트 그라운딩, `Leaflet + 공공데이터 API + 백엔드 키 은닉` $0 프록시 스택, `TotalCount` vs `Count` 페이징 교차 검증 루프.
 23. **Google Stitch 기반 `DESIGN.md`**: 디자인 토큰/의도를 담은 `DESIGN.md` 단일 진실 공급원 수립, CSS Grid 거시 골격 + Flexbox 미시 컴포넌트 2-Track 반응형 레이아웃, Stitch MCP 프로덕션 HTML/Tailwind 인출.
 24. **PDF Inspector 50ms 전처리 & 선택적 OCR**: 50ms 내 디지털 텍스트/스캔 여부 판별, 텍스트 페이지 직접 추출(Direct Extract) 및 스캔 페이지만 OCR 라우팅(비용 90% 절감), `chunkless-rag` 헤딩 트리 연계.
