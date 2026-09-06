@@ -82,6 +82,9 @@
 - **/업데이트 단축 명령어**: `git pull origin master` 선행 수신 후 변경사항 정리하여 `git commit & push` 양방향 무결점 동기화 일괄 수행 (게임 폴더 제외). 명시적 요청 시에만 push 수행.
 - **브라우저 창 팝업 절대 금지**: Playwright 등 웹 탐색은 100% 백그라운드(headless)로만 처리 (모니터 창 띄우기 금지).
 - **정보 아카이빙 3대 필수 메타데이터**: 유튜브/기사/문서 저장 시 1) 원본 출처, 2) 원본 정보 발행일자, 3) 내 보관소 등록일자 필수 기록.
+- **지식 4대 축 엄격 분리 (`Knowledge ≠ Source ≠ Decision ≠ System Rule`)**:
+  - `Knowledge`(원자적 개념: `02_AI_기술_위키`), `Sources`(외부 증거: `01_AI_시스템_및_도구`), `Decisions`(선택기록: `03_운영/ADR`), `Rules`(행동헌법: `GEMINI.md`, `core/*.py`)를 영구 분리.
+  - RAG 검색 노이즈 차단을 위해 1시간짜리 전체 자막을 본문에 무차별 적재하는 행위를 금지하며, 핵심 주장(Claims)과 타임스탬프 근거 구간 중심으로 발췌 보관(전체 자막은 선택 보관).
 - **유튜브 요약 & 탈(脫) AI 글쓰기**: 일반 영상은 억지 AI 적용점 없이 줄거리/핵심만 요약 (기술/생산성 또는 요청 시만 적용점 작성). 쉼표 다이어트, 번역투/상투어 배제, 사람다운 자연어 리듬감 유지.
 - **드라이브 분기 저장 (D: 우선)**: 메인 C: SSD 보호를 위해 미디어, 배경화면, 다운로드, 개인자료는 보조 SSD D: 드라이브(`D:\사진`, `D:\개인자료` 등)에 우선 저장.
 - **백그라운드 태스크 정리**: 터미널/백그라운드 명령 완료 즉시 프로세스를 정리하고 최종 상태를 명확히 보고.
@@ -111,6 +114,7 @@
 | obsidian-skills | `C:\Users\ildoc\.gemini\config\skills\obsidian-skills\scripts\vault_ops.py` |
 | pdf-inspector | `C:\Users\ildoc\.gemini\config\skills\pdf-inspector\scripts\inspect_pdf.py` |
 | everything-search | `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\core\everything_search.py` (Everything CLI `es.exe` 초고속 파일 탐색) |
+| security-gate | `C:\Users\ildoc\.gemini\antigravity\scratch\my_ai_workspace\core\security_gate.py` (프로젝트 위험도 3단계 판별 및 5대 보안게이트 감사) |
 
 전역 스킬: `C:\Users\ildoc\.gemini\config\skills\` | 워크스페이스 체크리스트: `my_ai_workspace\ANTIGRAVITY_STANDALONE.md`
 
@@ -123,9 +127,20 @@
 
 ---
 
-## 🛡️ 9. 안전 9대 원칙 & 🧠 10. 32대 상황별 자동 발동 프로토콜 (하네스 루프)
+## 🛡️ 9. 안전 9대 원칙 & 🧠 10. 33대 상황별 자동 발동 프로토콜 (하네스 루프)
 
-1. **복잡한 개발 (카파시 바이브 코딩 & Verification Loop)**: 가정·트레이드오프 선공개, 군더더기(Over-engineering) 배제, 외과수술적 최소 수정(Surgical Edit - `replace_file_content` 최우선). 모든 핵심 작업에 `READ -> ANALYZE -> PLAN -> EXECUTE -> VERIFY -> REPORT` 6단계 검증 루프 적용(초록불 통과 후 최종 보고). 보안 8대 원칙 기본 탑재.
+1. **복잡한 개발 (카파시 바이브 코딩 & Loop Engineering)**:
+   - 가정·트레이드오프 선공개, 군더더기(Over-engineering) 배제, 외과수술적 최소 수정(Surgical Edit - `replace_file_content` 최우선).
+   - **8단계 통합 폐쇄 루프**: 모든 핵심 엔지니어링 작업에 `GOAL ➔ READ ➔ ANALYZE ➔ PLAN ➔ EXECUTE ➔ VERIFY ➔ DECIDE ➔ REPORT` 8단계 폐쇄 루프 적용 (기존 6단계 `READ ➔ ANALYZE ➔ PLAN ➔ EXECUTE ➔ VERIFY ➔ REPORT`를 100% 보존하며 선행 `GOAL`, 후행 판정 `DECIDE` 통합).
+   - **검증 실패 시 재진입 루프**: 검증 결과가 `FAIL`이면 즉시 `[VERIFY FAIL ➔ ROOT CAUSE ➔ FIX ➔ VERIFY]` 재진입 루프로 복구하며, 검증 통과 시 `DECIDE`로 복귀한다.
+   - **BLOCKED 가드레일 (즉시 자동 진행 중단 및 사용자 보고)**: 1) 동일 원인 2회 이상 연속 실패, 2) 비가역적 위험 변경(임의 삭제, 결제, 외부 전송), 3) 보안 문제 감지(API Key 노출 등), 4) 사람의 판단/승인이 필요한 상황에서는 작업을 즉시 멈추고 `BLOCKED` 상태로 보고한다. "변경 완료"와 "정상 동작"을 절대 동일시하지 않으며, 객관적 검증 증거가 없는 `PASS` 판정을 금지한다.
+   - **장애 원인 9대 진단 순서 (`Agent Failed ≠ LLM Failed`)**: 작업 실패 시 모델 지능을 먼저 의심하여 프롬프트부터 수정하는 안티패턴을 배제하고, `인프라 ➔ 환경(.env) ➔ 도구실행 ➔ 타임아웃/RateLimit ➔ 파일경로/인코딩 ➔ 외부연동 ➔ 라우팅 ➔ 프롬프트 ➔ 모델추론` 순서로 물리적 시스템 제약부터 선제 제거한다.
+   - **가역성 기반 승인 분리 (`Generated ≠ Verified ≠ Approved ≠ Executed`)**: 생성(코딩·초안) ➔ 검증(테스트·게이트) ➔ 사람 승인(Review/Approve) ➔ 비가역적 실행(삭제·배포·푸시·메시지) 4단계를 엄격히 분리한다. AI가 생성했다고 해서 실행이 승인된 것이 아니며, 되돌리기 어려울수록 사람의 명시적 승인을 거친다.
+   - **인간의 역할 (Human Role)**: 사람은 단순 실행자가 아니라 최종 Auditor/Approver다. AI는 분석, 구현, 테스트, 반복 수정, 문서 초안을 담당하고, 사람은 목표 정의, 위험한 의사결정, 최종 검증, 승인을 전담한다.
+   - **5대 논리적 에이전트 역할 (Agent Role Separation)**: 단일 Gemini 프로세스 내에서 1) `ORCHESTRATOR`(작업 분해/취합), 2) `ANALYZER`(문제 분석/조사), 3) `WORKER`(구현/변경), 4) `TESTER`(테스트/검증), 5) `AUDITOR`(독립적 결과 검토)로 논리적 역할을 분리한다. 별도 프로세스나 외부 프레임워크는 생성하지 않는다.
+   - **신규 도구 도입 8단계 게이트 (New Tool Adoption Gate)**: `Problem ➔ Current Solution Check ➔ Gap 확인 ➔ Candidate Tool ➔ Isolated PoC ➔ Measurement ➔ Compare ➔ Adopt / Reject`. 현재 시스템으로 해결 가능 시 도입을 금지하며, 복잡성/의존성 부담을 Trade-off에 반드시 기록한다.
+   - **현재 단계 설치 금지 ([FREEZE])**: 실제 운영 필요성이 실측되지 않은 상태에서 Herdr, Buzz, Claude/OpenClaude, 신규 오케스트레이터, 신규 멀티에이전트 프레임워크, 신규 대시보드, 신규 MCP, 신규 메모리 레이어 설치 일체 금지.
+   - **아키텍처 의사결정 기록 (ADR) 기준**: AI 모델 선택, Orchestrator, Local/Cloud 역할, Git 전략, Multi-PC 동기화, RAG/Memory, Security, 핵심 자동화 등 중대한 기술 결정 시 9대 필수 항목(`Context, Problem, Decision, Alternatives, Reasons, Trade-offs, Consequences, Status, Date`)으로 기록하며, 사소한 변경에는 ADR을 작성하지 않는다.
 2. **장기 작업 / 대용량 문서 (W-S-C-I)**: Write(`scratch/`, `memory.db` 외부 기록), Select(`chunkless-rag` 핵심 팩트 추출), Compress(대화 3줄 요약 압축), Isolate(`research` 서브에이전트 격리 조사).
 3. **오디오 / 음성 처리**: 유료 API 대신 `audio.cpp` 로컬 C++ 엔진 및 8GB VRAM 최적화 설정 우선 활용.
 4. **커리어 / 역량 정리**: 옵시디언 축적 지식/개발 이력 기반 '전이 가능한 역량(Transferable Skills)' 도출 및 1인 사업 프로필/포트폴리오 구조화.
@@ -160,3 +175,12 @@
 30. **ES2027 명시적 자원 관리 & Temporal 무결성**: DB/파일/스트림 처리 시 `using` / `await using` 및 `DisposableStack` 즉시 안전 해제, `Temporal.ZonedDateTime` 불변 시공간 연산, Signals 기반 네이티브 반응성.
 31. **frouter형 실시간 헬스체크 & $0 라우팅**: 2초 헬스체크 기반 안정적 무료/오픈소스 모델 자동 폴백, 신규 모델 도입 시 OpenCode/OpenClaude 표준 config 포맷 1초 자동 생성·주입.
 32. **오픈소스 표준 레퍼런스 주입 & 시공간 팩트체크**: 산업 표준 오픈소스 사전 앵커링 및 스크립트/스킬 동시 생성 영구 자산화. 인물/정부/시사 이슈 요약 시 시스템 시각 기준 최신 현직 여부 단독 검색 교차 검증.
+33. **프로젝트 위험도 3단계 분류 & Security Gate (Builder ≠ Auditor 자가승인 금지)**:
+    - **대원칙 (만들었다 ≠ 검증됐다 & 증거 ≠ 결론)**: 코드를 생성한 Builder 에이전트는 결코 자기 코드를 승인(PASS)할 수 없다. 단순 결론이 아니라 검사 범위(Evidence)와 미검증 한계(Limitations)를 투명하게 공개하며, 검증하지 않은 것은 결코 안전하다고 선언하지 않는다(NOT VERIFIED 원칙).
+    - **위험도 3단계 분류 & 동적 승격(Risk Escalation)**: 컨텍스트 분류(Context Classification)를 통해 탐지 규칙·테스트 fixture의 자기 오염(Self-Trigger)을 배제하고, 🟢 LOW RISK(로컬 자동화·아카이빙 ➔ Vibe Mode), 🟡 MEDIUM RISK(외부 API·스토리지 ➔ 회귀 테스트 및 .env 격리), 🔴 HIGH RISK(인증·DB·개인정보·공개배포 ➔ Engineering Mode 강제). 작업 도중 고위험 요소 감지 시 `Vibe Mode Suspended` 발동 및 즉시 동적 승격.
+    - **Gate Status vs Overall Verdict 이원화**: 개별 게이트 상태 5종(`PASS`, `FAIL`, `WARNING`, `NOT VERIFIED`, `NOT APPLICABLE`)과 프로젝트 전체 판정 5종(`APPROVED`, `APPROVED_WITH_WARNINGS`, `BLOCKED`, `REQUIRES_AUDIT`, `INSUFFICIENT_EVIDENCE`)을 엄격히 구분한다.
+    - **자동 파이프라인 강제(Automated Enforcement)**: Security Gate는 수동 검사에 머무르지 않고, `trust_layer.py` 및 빌드 루프에 기본 결합되어 `BLOCKED` 시 완료 보고를 원천 차단한다.
+    - **시스템 비대화 방지 (System Bloat Defense) & 5-Gate Checklist**:
+      - "시스템이 똑똑해지는 것과 시스템이 커지는 것은 완전히 다른 일이다." 외부 지식을 접했을 때 '영상 ➔ 기능 추가'의 자동 연결을 영구 금지한다. 기능 구현 능력보다 불필요한 기능을 안 만드는 판단 능력을 우선시한다.
+      - **5-Gate Checklist**(1.실제 문제인가? 2.기존 기능 해결 가능한가? 3.자동화할 가치가 있는가? 4.추가 복잡성보다 효과가 큰가? 5.쉽게 삭제 가능한가?)를 엄수하며, `NO CHANGE`를 실패가 아니라 시스템 오염을 막은 1급 정상적 성공 결과로 대우한다.
+      - **Security Gate 증설 영구 동결(Freeze)**: 현재 v3.0 및 Git pre-commit 연동 수준을 유지하며, 과도한 배포 인터셉터/CLI 감시 등 추가 오버엔지니어링을 일체 금지한다.
