@@ -1,4 +1,4 @@
-# Dell Latitude 7440 Boot/Logon Auto-Sync Engine
+﻿# Dell Latitude 7440 Boot/Logon Auto-Sync Engine
 # Automatically synchronizes Obsidian Vault, GEMINI.md Constitution, Skills, and Daily Updates on laptop startup.
 
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8

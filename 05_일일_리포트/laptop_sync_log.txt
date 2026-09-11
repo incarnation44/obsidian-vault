@@ -1,0 +1,25 @@
+﻿[2026-09-10 20:05:28] === Laptop Auto-Sync Initiated on Boot/Logon ===
+[2026-09-10 20:05:28] INFO: Internet connection verified.
+[2026-09-10 20:05:28] INFO: Pulling latest changes from GitHub repository...
+[2026-09-10 20:05:28] INFO: Git Pull Result: From https://github.com/incarnation44/obsidian-vault  * branch            master     -> FETCH_HEAD Already up to date.
+[2026-09-10 20:05:28] INFO: GEMINI.md Constitution successfully synced to ~/.gemini/config/rules/GEMINI.md
+[2026-09-10 20:05:29] INFO: Global Skills (44 skills) successfully synced to ~/.gemini/config/skills
+[2026-09-10 20:05:29] INFO: C:\전일도 registered in Obsidian App.
+[2026-09-10 20:05:29] GUARD: Dell Latitude 7440 Hardware Guardrail Active.
+[2026-09-10 20:05:29] GUARD: Intel Iris Xe Graphics detected (Shared RAM). Cloud Gemini 3.7 Flash enforced as primary AI.
+[2026-09-10 20:05:29] GUARD: Heavy 8B local LLMs prohibited to protect battery life and prevent fan noise/thermal throttling.
+[2026-09-10 20:05:29] INFO: Today daily report (2026-09-10.md) verified.
+[2026-09-10 20:05:29] === Laptop Auto-Sync Completed Successfully ===
+[2026-09-10 20:06:00] === Laptop Auto-Sync Initiated on Boot/Logon ===
+[2026-09-10 20:06:00] INFO: Internet connection verified.
+[2026-09-10 20:06:00] INFO: Pulling latest changes from GitHub repository...
+[2026-09-10 20:06:00] INFO: Git Pull Result: error: cannot pull with rebase: You have unstaged changes. error: Please commit or stash them.
+[2026-09-10 20:06:01] INFO: GEMINI.md Constitution successfully synced to ~/.gemini/config/rules/GEMINI.md
+[2026-09-10 20:06:01] INFO: Global Skills (44 skills) successfully synced to ~/.gemini/config/skills
+[2026-09-10 20:06:01] INFO: C:\전일도 registered in Obsidian App.
+[2026-09-10 20:06:01] GUARD: Dell Latitude 7440 Hardware Guardrail Active.
+[2026-09-10 20:06:01] GUARD: Intel Iris Xe Graphics detected (Shared RAM). Cloud Gemini 3.7 Flash enforced as primary AI.
+[2026-09-10 20:06:01] GUARD: Heavy 8B local LLMs prohibited to protect battery life and prevent fan noise/thermal throttling.
+[2026-09-10 20:06:01] INFO: Today daily report (2026-09-10.md) verified.
+[2026-09-10 20:06:01] === Laptop Auto-Sync Completed Successfully ===
+[2026-09-11 19:48:10] INFO: Manual /업데이트 invoked. KH_AI 35 files pulled (90a570d), 4 new knowledge notes indexed, daily report 2026-09-11.md generated, sync dashboard #50 updated.
