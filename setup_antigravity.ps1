@@ -79,10 +79,10 @@ if ($MachineType -ne "academy" -and (Test-Path $vaultPath)) {
 
 # 5. Register Startup Auto-Sync
 Write-Step "[5/6] Registering Background Auto-Sync..."
-if ($MachineType -ne "academy" -and (Test-Path "$vaultPath\scripts\run_sync_laptop_silent.vbs")) {
+if ($MachineType -ne "academy" -and (Test-Path "$vaultPath\scripts\run_sync_$(${MachineType})_silent.vbs")) {
     $startupFolder = Join-Path $env:APPDATA "Microsoft\Windows\Start Menu\Programs\Startup"
     $vbsTarget = Join-Path $startupFolder "SyncAntigravityOnBoot.vbs"
-    Copy-Item -Path "$vaultPath\scripts\run_sync_laptop_silent.vbs" -Destination $vbsTarget -Force
+    Copy-Item -Path "$vaultPath\scripts\run_sync_$(${MachineType})_silent.vbs" -Destination $vbsTarget -Force
     Write-Ok "Background boot sync registered in Startup folder."
 } else {
     Write-Warn "Skipped auto-sync registration for this environment."
