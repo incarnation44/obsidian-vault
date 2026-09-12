@@ -25,7 +25,6 @@
 
 - 프로바이더: openrouter, 기본 모델: `google/gemini-3.8-flash` (바뀌었을 수 있으니 확인).
 - MCP `chrome-devtools`: `npx -y firecrawl-mcp`, `FIRECRAWL_API_KEY`는 새 PC에서 재발급해 `.env`에 넣는다.
-- Ollama 별칭은 기기별로 다르다. 노트북은 `local-qwen`(qwen2.5:3b, CPU), 본체는 RX 6600 기준 7B·8B로 잡는다.
 
 ## 4. 메모리 수동 등록
 
@@ -35,5 +34,5 @@
 
 - [ ] `hermes skills list`에 2건 `local` 표시
 - [ ] `~/wiki` 열리고 `index.md` 보인다
-- [ ] 모델·MCP·Ollama 동작 확인
+- [ ] 모델·MCP 동작 확인
 - [ ] 메모리 등록됨
